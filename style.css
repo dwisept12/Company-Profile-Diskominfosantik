@@ -1,0 +1,379 @@
+﻿/* ===== GLOBAL STYLES ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px !important;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* ===== COLOR UTILITIES ===== */
+.bg-navy {
+  background-color: #003366;
+}
+
+.text-gold {
+  color: #ffb800;
+}
+
+.text-navy {
+  color: #003366;
+}
+
+.text-purple {
+  color: #a855f7;
+}
+
+.bg-purple {
+  background-color: #a855f7;
+}
+
+.text-orange {
+  color: #f97316;
+}
+
+.bg-orange {
+  background-color: #f97316;
+}
+
+.text-teal {
+  color: #14b8a6;
+}
+
+.bg-teal {
+  background-color: #14b8a6;
+}
+
+.text-pink {
+  color: #ec4899;
+}
+
+.bg-pink {
+  background-color: #ec4899;
+}
+
+.border-navy {
+  border: 2px solid #003366 !important;
+}
+
+/* ===== NAVBAR STYLES ===== */
+.navbar {
+  background: white;
+  border-bottom: 1px solid #eee;
+  padding: 0.5rem 0;
+}
+
+.navbar-nav .nav-link {
+  font-size: 14px;
+  padding: 0.5rem 0.8rem !important;
+}
+
+/* NAVBAR SEARCH (dropdown under icon) */
+.nav-search-wrap {
+  position: relative;
+}
+
+.nav-search-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  display: none;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  z-index: 1050;
+  min-width: 260px;
+}
+
+.nav-search-dropdown .input-group {
+  padding: 6px 8px;
+}
+
+.nav-search-dropdown input.form-control {
+  border: none;
+  box-shadow: none;
+}
+
+.nav-search-dropdown .btn {
+  border-radius: 6px;
+}
+
+.nav-search-wrap.open .nav-search-dropdown {
+  display: block;
+}
+
+@media (max-width: 992px) {
+  /* hide desktop search on smaller screens */
+  .nav-search-wrap {
+    display: none !important;
+  }
+}
+
+.brand-text .text-navy {
+  color: #003366;
+}
+
+.kepanjangan-text {
+  font-size: 10px;
+  line-height: 1.2;
+  max-width: 300px;
+  font-weight: 500;
+}
+
+.dropdown-menu {
+  padding: 1rem;
+  min-width: 200px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
+}
+
+.dropdown-item {
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #475569;
+}
+
+.dropdown-item:hover {
+  background-color: #f1f5f9;
+  color: #003366;
+}
+
+/* ===== HERO SECTION ===== */
+.hero-section {
+  background: linear-gradient(135deg, #0056b3 0%, #003366 100%);
+  color: white;
+  padding: 80px 0;
+  border-radius: 0 0 50px 50px;
+  margin-bottom: 0;
+}
+
+.hero-img-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* ===== SERVICE CARDS ===== */
+.service-card {
+  border: none;
+  border-radius: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  height: 100%;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 51, 102, 0.1) !important;
+}
+
+.icon-box {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+/* ===== NEWS CARDS ===== */
+.news-card-main {
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  color: white;
+  height: 400px;
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+.news-overlay {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 20px;
+}
+
+.news-tag {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 2;
+}
+
+.news-card-small {
+  border: none;
+  border-radius: 20px;
+  transition: all 0.3s;
+  background: #fff;
+}
+
+.news-card-small:hover {
+  background: #f1f5f9;
+}
+
+.img-news-small {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* ===== SAMBUTAN SECTION ===== */
+.sambutan-card {
+  border: none;
+  border-radius: 30px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.quote-icon {
+  width: 60px;
+  height: 60px;
+  background: var(--gold-accent);
+  color: white;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin-bottom: 25px;
+}
+
+.sambutan-text {
+  line-height: 1.8;
+  color: var(--text-muted);
+}
+
+/* ===== BUTTON STYLES ===== */
+.btn-outline-navy {
+  border: 2px solid #003366;
+  color: #003366;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.btn-outline-navy:hover {
+  background-color: #003366;
+  color: #ffffff;
+}
+
+.btn-navy-dark {
+  background-color: #003366;
+  color: white;
+  transition: all 0.3s;
+}
+
+.btn-navy-dark:hover {
+  background-color: #002347;
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 51, 102, 0.2);
+}
+
+/* ===== ARTICLE SECTION ===== */
+.article-body p {
+  margin-bottom: 1.5rem;
+  color: #475569;
+  line-height: 1.8;
+}
+
+.article-body .content-text p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  content: "|";
+  color: #cbd5e1;
+}
+
+/* ===== GENERAL SECTION ===== */
+section {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: #003366;
+  color: rgba(255, 255, 255, 0.8);
+  padding: 60px 0 20px;
+  margin-top: 40px;
+}
+
+/* ===== SPECIAL EFFECTS ===== */
+.shadow-glow-pink {
+  box-shadow: 0 0 25px rgba(236, 72, 153, 0.2);
+  border: 1px solid rgba(236, 72, 153, 0.3) !important;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  .hero-section {
+    padding: 50px 0 30px;
+  }
+
+  .service-card {
+    padding: 15px;
+  }
+
+  .navbar-nav .nav-link {
+    font-size: 13px;
+    padding: 0.4rem 0.6rem !important;
+  }
+
+  .kepanjangan-text {
+    font-size: 8px;
+  }
+
+  .news-card-main {
+    height: 250px;
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    padding: 0 12px;
+  }
+
+  .hero-section {
+    padding: 40px 0 20px;
+    border-radius: 0 0 30px 30px;
+  }
+
+  .service-card {
+    padding: 12px;
+  }
+
+  .navbar-nav .nav-link {
+    font-size: 12px;
+    padding: 0.3rem 0.5rem !important;
+  }
+
+  .news-card-main {
+    height: 200px;
+  }
+}
