@@ -20,8 +20,8 @@
             <div class="col-md-6 mx-auto mt-4">
                 <div class="input-group shadow-lg rounded-pill overflow-hidden">
                     <span class="input-group-text border-0 bg-white ps-4"><i class="bi bi-search text-muted"></i></span>
-                    <input type="text" class="form-control border-0 py-3" placeholder="Cari dokumen (misal: RENSTRA, Anggaran)...">
-                    <button class="btn btn-warning px-4 fw-bold text-white">Cari</button>
+                    <input type="text" class="form-control border-0 py-3" placeholder="Cari dokumen (misal: RENSTRA, Anggaran)..." id="search-input-dokumen" data-search="dokumen">
+                    <button class="btn btn-warning px-4" id="search-button-dokumen"><i class="bi bi-search text-white"></i></button>
                 </div>
             </div>
         </div>

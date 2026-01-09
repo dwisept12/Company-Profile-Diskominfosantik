@@ -22,8 +22,9 @@
                 </div>
                 <div class="col-lg-5 mt-4 mt-lg-0">
                     <div class="input-group shadow-lg rounded-pill overflow-hidden">
-                        <input type="text" class="form-control border-0 py-3 ps-4" placeholder="Cari berita...">
-                        <button class="btn btn-warning px-4"><i class="bi bi-search text-white"></i></button>
+                        <span class="input-group-text border-0 bg-white ps-4"><i class="bi bi-search text-muted"></i></span>
+                        <input type="text" class="form-control border-0 py-3" placeholder="Cari berita..." id="search-input-berita" data-search="berita">
+                        <button class="btn btn-warning px-4" id="search-button-berita"><i class="bi bi-search text-white"></i></button>
                     </div>
                 </div>
             </div>

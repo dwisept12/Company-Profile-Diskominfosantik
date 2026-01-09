@@ -30,5 +30,42 @@ document.addEventListener("DOMContentLoaded", includeHTML);
 
 // Initialize behaviors for included fragments (idempotent)
 function initIncludes() {
-  // Placeholder for future initialization functions
+  initAccordion();
+}
+
+// Initialize FAQ accordion (idempotent)
+function initAccordion() {
+  var buttons = document.querySelectorAll(".faq-question");
+  buttons.forEach(function (btn) {
+    if (btn.dataset.faqInit) return; // already initialized
+    btn.dataset.faqInit = "1";
+    btn.addEventListener("click", function () {
+      var item = btn.closest(".faq-item");
+      if (!item) return;
+      // toggle open class; CSS handles animation via max-height
+      item.classList.toggle("open");
+    });
+  });
+}
+
+// Ensure accordion initialized even if includes/load timing varies
+window.addEventListener("load", function () {
+  // remove any 'open' classes on load to ensure all answers are closed
+  var items = document.querySelectorAll(".faq-item.open");
+  items.forEach(function (it) {
+    it.classList.remove("open");
+  });
+  initAccordion();
+});
+
+// Simple debounce (top-level so it is available when includes run)
+function debounce(fn, wait) {
+  var t;
+  return function () {
+    var args = arguments;
+    clearTimeout(t);
+    t = setTimeout(function () {
+      fn.apply(null, args);
+    }, wait || 250);
+  };
 }
