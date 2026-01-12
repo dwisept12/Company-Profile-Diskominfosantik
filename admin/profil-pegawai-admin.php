@@ -7,45 +7,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="style.css">
-    <style>
-        :root { --sidebar-width: 280px; }
-        body { background-color: #f1f5f9; }
-        .sidebar {
-            width: var(--sidebar-width);
-            height: 100vh;
-            position: fixed;
-            background: #003366;
-            color: white;
-            z-index: 1000;
-        }
-        .main-content { margin-left: var(--sidebar-width); padding: 30px; }
-        .nav-admin-link {
-            color: rgba(255,255,255,0.7);
-            text-decoration: none;
-            padding: 12px 25px;
-            display: flex;
-            align-items: center;
-            border-radius: 10px;
-            margin: 4px 15px;
-        }
-        .nav-admin-link.active { background: rgba(255,255,255,0.1); color: #FFB800; }
-        .admin-card { border: none; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-    </style>
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 
-    <div class="sidebar shadow">
-        <div class="p-4 d-flex align-items-center mb-3">
-            <div class="logo-box bg-white text-primary me-2 fw-bold">DK</div>
-            <span class="fw-bold h5 mb-0">Admin Panel</span>
-        </div>
-        <nav class="d-grid">
-            <a href="admin-dashboard.php" class="nav-admin-link"><i class="bi bi-speedometer2 me-3"></i> 1. Dashboard</a>
-            <a href="profil-pegawai-admin.php" class="nav-admin-link active"><i class="bi bi-people me-3"></i> 6. Profil Tim / Pegawai</a>
-            <a href="index.html" class="nav-admin-link text-danger mt-5"><i class="bi bi-box-arrow-right me-3"></i> 12. Logout</a>
-        </nav>
-    </div>
+    <?php include 'sidebar.php'; ?>
 
     <div class="main-content text-start">
         <header class="mb-5 d-flex justify-content-between align-items-center">
