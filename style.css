@@ -314,6 +314,9 @@ section {
 
 /* ===== FOOTER ===== */
 footer {
+  background: #003366;
+  color: rgba(255, 255, 255, 0.8);
+  padding: 60px 0 20px;
   margin-top: 40px;
 }
 
