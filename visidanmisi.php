@@ -27,14 +27,11 @@
         <div class="container py-5">
             <div class="row g-5">
                 <div class="col-lg-12 mb-4">
-                    <div class="card service-card p-5 border-0 shadow-sm text-center bg-white">
-                        <div class="icon-box bg-primary bg-opacity-10 text-primary mx-auto mb-4" style="width: 80px; height: 80px;">
-                            <i class="bi bi-eye-fill h2 mb-0"></i>
-                        </div>
+                    <div class="card p-5 border-0 shadow-sm text-center bg-white" style="border-radius: 20px;">
                         <h2 class="fw-bold text-navy mb-4">Visi Kami</h2>
-                        <h3 class="fst-italic text-muted lh-base px-lg-5">
+                        <p class="fst-italic text-muted lh-base px-lg-5">
                             "Mewujudkan Kabupaten Bekasi yang Makin Berani melalui Transformasi Digital menuju Masyarakat yang Sejahtera dan Modern."
-                        </h3>
+                        </p>
                     </div>
                 </div>
 
@@ -45,7 +42,7 @@
                     </div>
                     <div class="row g-4 justify-content-center text-start">
                         <div class="col-md-4">
-                            <div class="card service-card p-4 h-100 border-0 shadow-sm">
+                            <div class="card p-4 h-100 border-0 shadow-sm" style="border-radius: 20px;">
                                 <div class="icon-box bg-warning bg-opacity-10 text-warning mb-3">
                                     <span class="h4 fw-bold mb-0">01</span>
                                 </div>
@@ -54,7 +51,7 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="card service-card p-4 h-100 border-0 shadow-sm">
+                            <div class="card p-4 h-100 border-0 shadow-sm" style="border-radius: 20px;">
                                 <div class="icon-box bg-success bg-opacity-10 text-success mb-3">
                                     <span class="h4 fw-bold mb-0">02</span>
                                 </div>
@@ -63,7 +60,7 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="card service-card p-4 h-100 border-0 shadow-sm">
+                            <div class="card p-4 h-100 border-0 shadow-sm" style="border-radius: 20px;">
                                 <div class="icon-box bg-info bg-opacity-10 text-info mb-3">
                                     <span class="h4 fw-bold mb-0">03</span>
                                 </div>

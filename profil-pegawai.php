@@ -12,6 +12,7 @@
 
     <section class="py-5 bg-navy text-white text-center rounded-bottom-5">
         <div class="container py-5">
+            <span class="badge bg-warning text-dark mb-3 px-3 py-2 fw-bold rounded-pill">Sumber Daya Manusia</span>
             <h1 class="display-5 fw-bold mb-3">PROFIL PEGAWAI</h1>
             <p class="opacity-75 lead">Mengenal lebih dekat sumber daya manusia Diskominfosantik Kabupaten Bekasi</p>
         </div>
@@ -19,19 +20,32 @@
 
     <section class="py-5">
         <div class="container">
-            <div class="row g-4">
-                <div class="col-md-3 col-6">
-                    <div class="card service-card text-center p-4">
-                        <div class="position-relative d-inline-block mx-auto mb-3">
-                            <img src="https://via.placeholder.com/150" class="rounded-circle border border-4 border-white shadow-sm" style="width: 120px; height: 120px; object-fit: cover;">
+            <div class="row g-5">
+                <div class="col-md-8">
+                    <div class="card p-4 h-100" style="border: none; border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);">
+                        <div class="row g-4 align-items-center">
+                            <div class="col-md-4">
+                                <img src="https://via.placeholder.com/200x280" class="img-fluid rounded shadow-sm" style="width: 100%; object-fit: cover; aspect-ratio: 200/280;">
+                            </div>
+                            <div class="col-md-8">
+                                <h4 class="fw-bold text-navy mb-2">Dr. Ahmad Fauzi, M.Kom</h4>
+                                <p class="text-warning fw-bold mb-3 fs-5">Kepala Dinas</p>
+                                <hr>
+                                <div class="biodata-details">
+                                    <div class="mb-3">
+                                        <label class="fw-bold text-navy">NIP</label>
+                                        <p class="text-muted">19800101XXXXXXXX</p>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="fw-bold text-navy">Bidang Tugas</label>
+                                        <p class="text-muted">Pimpinan Dinas Komunikasi, Informatika, Statistik dan Persandian</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <h6 class="fw-bold text-navy mb-1">Dr. Ahmad Fauzi, M.Kom</h6>
-                        <p class="small text-warning fw-bold mb-2">Kepala Dinas</p>
-                        <hr class="w-25 mx-auto">
-                        <p class="small text-muted mb-0">NIP. 19800101XXXXXXXX</p>
                     </div>
                 </div>
-                </div>
+            </div>
         </div>
     </section>
 

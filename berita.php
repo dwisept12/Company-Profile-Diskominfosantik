@@ -87,48 +87,7 @@
         </div>
     </section>
 
-    <footer id="footer" class="py-5">
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-lg-4 text-white">
-                    <div class="d-flex align-items-center mb-4 text-white">
-                        <div class="logo-box bg-white text-primary me-2">DK</div>
-                        <h5 class="mb-0 fw-bold">Diskominfosantik</h5>
-                    </div>
-                    <p class="small opacity-75 mb-4 lh-lg text-start">Dinas Komunikasi, Informatika, Statistik dan Persandian Kabupaten Bekasi - Membangun tata kelola pemerintahan berbasis teknologi digital.</p>
-                    <div class="d-flex gap-2">
-                        <a href="#" class="btn btn-outline-light btn-sm rounded-circle"><i class="bi bi-facebook"></i></a>
-                        <a href="#" class="btn btn-outline-light btn-sm rounded-circle"><i class="bi bi-instagram"></i></a>
-                        <a href="#" class="btn btn-outline-light btn-sm rounded-circle"><i class="bi bi-twitter-x"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-2 offset-lg-1 text-white text-start">
-                    <h6 class="fw-bold mb-4">Tautan Cepat</h6>
-                    <ul class="list-unstyled small d-grid gap-3 opacity-75">
-                        <li><a href="profil.html" class="text-white text-decoration-none">Profil Dinas</a></li>
-                        <li><a href="layanan.html" class="text-white text-decoration-none">Layanan Publik</a></li>
-                        <li><a href="informasi-publik.php" class="text-white text-decoration-none">Informasi Publik</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-4 text-white text-start">
-                    <h6 class="fw-bold mb-4">Kontak Kami</h6>
-                    <ul class="list-unstyled small d-grid gap-3 opacity-75">
-                        <li class="d-flex gap-3"><i class="bi bi-geo-alt text-warning"></i> Jl. Ahmad Yani No. 1, Bekasi</li>
-                        <li class="d-flex gap-3"><i class="bi bi-envelope text-warning"></i> diskominfosantik@bekasikab.go.id</li>
-                        <li class="d-flex gap-3"><i class="bi bi-telephone text-warning"></i> (021) 8850-1234</li>
-                    </ul>
-                </div>
-            </div>
-            <hr class="my-5 border-white opacity-10">
-            <div class="d-flex flex-column flex-md-row justify-content-between small text-white opacity-50 text-center">
-                <p class="mb-2 mb-md-0">© 2026 Diskominfosantik Kabupaten Bekasi. All rights reserved.</p>
-                <div class="d-flex gap-4 justify-content-center">
-                    <span>Kebijakan Privasi</span>
-                    <span>Syarat & Ketentuan</span>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <div data-include="footer.html"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
