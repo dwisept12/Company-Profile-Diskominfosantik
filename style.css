@@ -180,6 +180,10 @@ body {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   padding: 20px;
   height: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .service-card:hover {
@@ -188,13 +192,20 @@ body {
 }
 
 .icon-box {
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 15px;
+  background-color: #003366 !important;
+}
+
+.service-number {
+  font-size: 32px;
+  font-weight: 700;
+  color: white !important;
 }
 
 /* ===== NEWS CARDS ===== */
