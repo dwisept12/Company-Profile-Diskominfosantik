@@ -20,25 +20,65 @@
 
     <section class="py-5">
         <div class="container">
-            <div class="row g-5">
-                <div class="col-md-8">
-                    <div class="card p-4 h-100" style="border: none; border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);">
-                        <div class="row g-4 align-items-center">
-                            <div class="col-md-4">
-                                <img src="https://via.placeholder.com/200x280" class="img-fluid rounded shadow-sm" style="width: 100%; object-fit: cover; aspect-ratio: 200/280;">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card p-4 p-md-5 border-0 rounded-4 shadow-sm h-100">
+                        <div class="row g-4 g-lg-5 align-items-start">
+                            
+                            <div class="col-md-3 text-center">
+                                <img src="assets/img/images.jpg" 
+                                     class="img-fluid rounded-4 shadow" 
+                                     style="width: 100%; object-fit: cover; aspect-ratio: 3/4;" 
+                                     alt="Foto Pegawai">
                             </div>
-                            <div class="col-md-8">
-                                <h4 class="fw-bold text-navy mb-2">Dr. Ahmad Fauzi, M.Kom</h4>
-                                <p class="text-warning fw-bold mb-3 fs-5">Kepala Dinas</p>
-                                <hr>
-                                <div class="biodata-details">
-                                    <div class="mb-3">
-                                        <label class="fw-bold text-navy">NIP</label>
-                                        <p class="text-muted">19800101XXXXXXXX</p>
+
+                            <div class="col-md-9">
+                                <h2 class="fw-bold text-navy mb-1">Dr. Ahmad Fauzi, M.Kom</h2>
+                                <p class="text-warning fw-bold fs-5 mb-3">Kepala Dinas</p>
+                                <hr class="opacity-25 my-4">
+
+                                <div class="row g-4">
+                                    <div class="col-md-6">
+                                        <div class="mb-4">
+                                            <label class="fw-bold text-navy">Nomor Induk Pegawai (NIP)</label>
+                                            <p class="text-muted">19800101xxxxx</p>
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <label class="fw-bold text-navy d-block mb-1">Bidang Tugas</label>
+                                            <p class="text-muted">
+                                                Bertanggung jawab sebagai Pimpinan Dinas Komunikasi, Informatika, Statistik dan Persandian dalam merumuskan kebijakan teknis.
+                                            </p>
+                                        </div>
                                     </div>
-                                    <div class="mb-3">
-                                        <label class="fw-bold text-navy">Bidang Tugas</label>
-                                        <p class="text-muted">Pimpinan Dinas Komunikasi, Informatika, Statistik dan Persandian</p>
+
+                                    <div class="col-md-6">
+                                        <div class="mb-4">
+                                            <label class="fw-bold text-navy d-block mb-2">Riwayat Pendidikan</label>
+                                            <ul class="list-unstyled d-grid gap-2">
+                                                <li class="d-flex align-items-start text-muted">
+                                                    <i class="bi bi-mortarboard-fill text-warning me-2 mt-1"></i>
+                                                    <div>
+                                                        <strong>S3 Ilmu Komputer (2018)</strong><br>
+                                                        <small>Universitas Indonesia</small>
+                                                    </div>
+                                                </li>
+                                                <li class="d-flex align-items-start text-muted">
+                                                    <i class="bi bi-mortarboard-fill text-warning me-2 mt-1"></i>
+                                                    <div>
+                                                        <strong>S2 Teknik Informatika (2012)</strong><br>
+                                                        <small>Institut Teknologi Bandung</small>
+                                                    </div>
+                                                </li>
+                                                <li class="d-flex align-items-start text-muted">
+                                                    <i class="bi bi-mortarboard-fill text-warning me-2 mt-1"></i>
+                                                    <div>
+                                                        <strong>S1 Sistem Informasi (2008)</strong><br>
+                                                        <small>Universitas Gunadarma</small>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
