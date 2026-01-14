@@ -25,7 +25,7 @@ if ($_SESSION['status_login'] != true) {
     <div class="main-content text-start">
         <header class="mb-5 d-flex justify-content-between align-items-center">
             <div>
-                <h3 class="fw-bold text-navy mb-1">Manajemen Dokumen / Download</h3>
+                <h3 class="fw-bold text-navy mb-1">Manajemen Dokumen</h3>
                 <p class="text-muted small">Kelola berkas publik, regulasi, dan laporan resmi.</p>
             </div>
             <button class="btn btn-navy-dark rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#modalUploadDokumen">

@@ -34,34 +34,32 @@ if ($_SESSION['status_login'] != true) {
         </header>
 
         <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
-            <div class="table-responsive text-start">
-                <table class="table align-middle mb-0 text-start">
-                    <thead class="bg-light text-navy text-start">
+            <div class="table-responsive">
+                <table class="table align-middle mb-0 table-hover">
+                    <thead class="bg-light border-bottom">
                         <tr>
-                            <th class="ps-4 text-start">Thumbnail</th>
-                            <th class="text-start">Informasi Berita</th>
-                            <th class="text-start">Kategori</th>
-                            <th class="text-start">Status</th>
-                            <th class="text-center text-start">Aksi</th>
+                            <th class="ps-4 py-3 fw-bold">Informasi Berita</th>
+                            <th class="py-3 fw-bold">Tanggal Berita</th>
+                            <th class="py-3 fw-bold">Kategori</th>
+                            <th class="py-3 fw-bold">Status</th>
+                            <th class="py-3 fw-bold text-center">Aksi</th>
                         </tr>
                     </thead>
-                    <tbody class="text-start">
+                    <tbody>
                         <tr>
-                            <td class="ps-4 text-start">
-                                <img src="https://via.placeholder.com/80x50" class="rounded-3 shadow-sm" alt="Berita">
+                            <td class="ps-4 py-3">
+                                <span class="fw-bold d-block">Transformasi Digital Kabupaten Bekasi</span>
                             </td>
-                            <td class="text-start">
-                                <span class="fw-bold d-block text-navy text-start">Transformasi Digital Kabupaten Bekasi</span>
-                                <small class="text-muted text-start">5 Januari 2026</small>
+                            <td class="py-3">
+                                <small class="text-muted">5 Januari 2026</small>
                             </td>
-                            <td class="text-start"><span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill text-start">Teknologi</span></td>
-                            <td class="text-start"><span class="badge bg-success bg-opacity-10 text-success px-3 py-2 rounded-pill text-start">Published</span></td>
-                            <td class="text-center text-start">
-                                <button class="btn btn-sm btn-light text-primary me-1 text-start" data-bs-toggle="modal" data-bs-target="#modalEditBerita1">
+                            <td class="py-3"><span class="badge bg-primary bg-opacity-10 text-primary px-3 rounded-pill">Teknologi</span></td>
+                            <td class="py-3"><span class="badge bg-success bg-opacity-10 text-success px-3 rounded-pill">Published</span></td>
+                            <td class="py-3 text-center">
+                                <button class="btn btn-sm btn-outline-primary rounded-2 me-1" data-bs-toggle="modal" data-bs-target="#modalEditBerita1">
                                     <i class="bi bi-pencil-square"></i>
                                 </button>
-                                
-                                <button type="button" class="btn btn-sm btn-light text-danger text-start" onclick="konfirmasiHapus(1, 'Transformasi Digital Kabupaten Bekasi')">
+                                <button type="button" class="btn btn-sm btn-outline-danger rounded-2" onclick="konfirmasiHapus(1, 'Transformasi Digital Kabupaten Bekasi')" title="Hapus">
                                     <i class="bi bi-trash"></i>
                                 </button>
                             </td>

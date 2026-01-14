@@ -1,6 +1,6 @@
 <?php
 session_start(); // Memulai sesi keamanan
-// include 'koneksi.php'; // Aktifkan jika sudah ada database
+include 'db.php';
 
 $username_admin = "admin_kominfo"; // Contoh username tetap (Ganti dengan data DB nanti)
 $password_admin = "Kominfo2026!"; // Contoh password tetap (Ganti dengan data DB nanti)

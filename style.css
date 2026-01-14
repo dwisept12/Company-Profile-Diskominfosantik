@@ -28,44 +28,44 @@ body {
   background-color: #003366;
 }
 
-.text-gold {
-  color: #ffb800;
-}
-
 .text-navy {
   color: #003366;
 }
 
-.text-purple {
-  color: #a855f7;
+.text-gold {
+  color: #ffb800;
 }
 
 .bg-purple {
   background-color: #a855f7;
 }
 
-.text-orange {
-  color: #f97316;
+.text-purple {
+  color: #a855f7;
 }
 
 .bg-orange {
   background-color: #f97316;
 }
 
-.text-teal {
-  color: #14b8a6;
+.text-orange {
+  color: #f97316;
 }
 
 .bg-teal {
   background-color: #14b8a6;
 }
 
-.text-pink {
-  color: #ec4899;
+.text-teal {
+  color: #14b8a6;
 }
 
 .bg-pink {
   background-color: #ec4899;
+}
+
+.text-pink {
+  color: #ec4899;
 }
 
 .border-navy {
@@ -498,32 +498,24 @@ footer {
   padding: 30px;
 }
 
-/* Stat Cards */
-.stat-card {
+/* Admin Cards - Grouped */
+.stat-card,
+.admin-card,
+.card-editor,
+.editor-card,
+.settings-card,
+.message-card,
+.user-card {
   border: none;
   border-radius: 20px;
   transition: 0.3s;
 }
 
-/* Admin Cards */
-.admin-card {
-  border: none;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-}
-
-/* Editor/Form Cards */
+.admin-card,
 .card-editor,
-.editor-card {
-  border: none;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-}
-
-/* Settings Card */
-.settings-card {
-  border: none;
-  border-radius: 20px;
+.editor-card,
+.settings-card,
+.user-card {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
@@ -551,41 +543,113 @@ footer {
   object-fit: cover;
 }
 
-/* Message Cards */
-.message-card {
-  border: none;
-  border-radius: 20px;
-  transition: 0.3s;
-}
-
 .unread {
   border-left: 5px solid #ffb800 !important;
   background: #fff;
 }
 
-/* User Card */
-.user-card {
+/* ===== LOGIN PAGE STYLES ===== */
+.login-page-body {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  background-color: #f1f5f9;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.login-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 500px;
   border: none;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border-radius: 25px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  background: white;
 }
 
-/* Logo Box */
-.logo-box {
-  width: 45px;
-  height: 45px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.login-card-body {
+  padding: 2rem;
 }
 
-/* Icon Box */
-.icon-box {
-  width: 45px;
-  height: 45px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+@media (min-width: 768px) {
+  .login-card-body {
+    padding: 3rem;
+  }
+}
+
+.login-page-body .logo-box {
+  width: 60px;
+  height: 60px;
+  background: #003366;
+  color: white;
+  border-radius: 15px;
+  font-size: 1.5rem;
+  margin: 0 auto 20px;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(0, 51, 102, 0.15);
+}
+
+.login-card .form-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #003366;
+  margin-bottom: 0.75rem;
+}
+
+.login-card .form-control,
+.login-card .input-group-text {
+  padding: 12px 20px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.login-card .form-control:focus {
+  border-color: #003366;
+  box-shadow: none;
+  background-color: #f8fafb;
+}
+
+.login-card .input-group-text {
+  background-color: #f8fafb;
+  border-color: #e2e8f0;
+  cursor: pointer;
+}
+
+.login-card .input-group-text:hover {
+  background-color: #f1f5f9;
+}
+
+.btn-navy-login {
+  background-color: #003366;
+  color: white;
+  border: none;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 14px 20px;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 51, 102, 0.2);
+}
+
+.btn-navy-login:hover {
+  background-color: #002244;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 51, 102, 0.3);
+}
+
+.btn-navy-login:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 51, 102, 0.2);
 }

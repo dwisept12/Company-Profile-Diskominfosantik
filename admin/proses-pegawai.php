@@ -1,5 +1,5 @@
 <?php
-// Hubungkan ke database
+include 'db.php';
 
 // 1. LOGIKA HAPUS (via URL)
 if (isset($_GET['aksi']) && $_GET['aksi'] == 'hapus') {

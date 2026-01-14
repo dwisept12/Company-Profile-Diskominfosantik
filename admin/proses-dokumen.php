@@ -1,6 +1,5 @@
 <?php
-// Koneksi ke database (Sesuaikan dengan konfigurasi Anda)
-// $koneksi = mysqli_connect("localhost", "root", "", "nama_database");
+include 'db.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_GET['aksi'])) {
     

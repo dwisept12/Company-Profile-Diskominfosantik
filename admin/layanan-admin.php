@@ -1,3 +1,12 @@
+<?php
+// 1. Hubungkan ke Database
+include 'db.php';
+
+// 2. Ambil data dari tabel layanan (Urutkan dari yang terbaru)
+$query = "SELECT * FROM layanan ORDER BY id DESC";
+$result = mysqli_query($koneksi, $query);
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -27,40 +36,82 @@
         </div>
 
         <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
-            <table class="table align-middle mb-0">
-                <thead class="bg-white border-bottom text-navy">
-                    <tr>
-                        <th class="ps-4 py-3">Ikon</th>
-                        <th>Nama Layanan</th>
-                        <th>Deskripsi Singkat</th>
-                        <th>Status</th>
-                        <th class="text-center">Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="ps-4">
-                            <div class="icon-box bg-primary bg-opacity-10 text-primary mb-0" style="width: 45px; height: 45px;">
-                                <i class="bi bi-diagram-3-fill"></i>
-                            </div>
-                        </td>
-                        <td><span class="fw-bold">SPBE</span></td>
-                        <td><small class="text-muted">Sistem Pemerintahan Berbasis Elektronik...</small></td>
-                        <td><span class="badge bg-success bg-opacity-10 text-success rounded-pill px-3">Aktif</span></td>
-                        <td class="text-center">
-                            <button class="btn btn-sm btn-light text-primary me-2" data-bs-toggle="modal" data-bs-target="#modalEdit1">
-                                <i class="bi bi-pencil-square"></i>
-                            </button>
+            <div class="table-responsive">
+                <table class="table align-middle mb-0 table-hover">
+                    <thead class="bg-light border-bottom">
+                        <tr>
+                            <th class="ps-4 py-3 fw-bold">No.</th>
+                            <th class="py-3 fw-bold" style="min-width: 150px;">Nama Layanan</th>
+                            <th class="py-3 fw-bold">Link Akses</th>
+                            <th class="py-3 fw-bold">Deskripsi Singkat</th>
+                            <th class="py-3 fw-bold">Status</th>
+                            <th class="py-3 fw-bold text-center">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <?php
+                        $no = 1;
+                        $data_layanan = []; 
+                        
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $data_layanan[] = $row; 
+                        ?>
+                        <tr>
+                            <td class="ps-4 py-3"><span class="fw-bold"><?php echo $no++; ?></span></td>
                             
-                            <button type="button" 
-                               class="btn btn-sm btn-light text-danger" 
-                               onclick="konfirmasiHapus(1, 'SPBE')">
-                                <i class="bi bi-trash"></i>
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                            <td class="py-3">
+                                <span class="fw-bold"><?php echo $row['nama_layanan']; ?></span>
+                            </td>
+
+                            <td class="py-3">
+                                <a href="<?php echo $row['url']; ?>" target="_blank" class="text-primary text-decoration-none small fw-semibold" style="display: block; max-width: 250px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                    <?php echo $row['url']; ?> <i class="bi bi-box-arrow-up-right ms-1" style="font-size: 10px;"></i>
+                                </a>
+                            </td>
+
+                            <td class="py-3">
+                                <small class="text-muted">
+                                    <?php 
+                                    echo substr($row['deskripsi'], 0, 50) . '...'; 
+                                    ?>
+                                </small>
+                            </td>
+                            <td class="py-3">
+                                <?php if ($row['status'] == 1): ?>
+                                    <span class="badge bg-success bg-opacity-10 text-success rounded-pill px-3 fw-bold">Aktif</span>
+                                <?php else: ?>
+                                    <span class="badge bg-secondary bg-opacity-10 text-secondary rounded-pill px-3 fw-bold">Non-Aktif</span>
+                                <?php endif; ?>
+                            </td>
+                            <td class="py-3 text-center">
+                                <button class="btn btn-sm btn-outline-primary rounded-2 me-1" data-bs-toggle="modal" 
+                                        data-bs-target="#modalEdit<?php echo $row['id']; ?>" 
+                                        title="Edit">
+                                    <i class="bi bi-pencil-square"></i>
+                                </button>
+                                
+                                <button type="button" class="btn btn-sm btn-outline-danger rounded-2" 
+                                   onclick="konfirmasiHapus(<?php echo $row['id']; ?>, '<?php echo $row['nama_layanan']; ?>')"
+                                   title="Hapus">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <?php } ?>
+
+                        <tr class="table-light border-top border-3">
+                            <td class="ps-4 py-3"><span class="fw-bold text-muted">#</span></td>
+                            <td class="py-3"><span class="fw-bold text-muted">Contoh Dummy</span></td>
+                            <td class="py-3"><small class="text-muted">https://contoh.go.id</small></td>
+                            <td class="py-3"><small class="text-muted">Ini adalah data contoh statis HTML...</small></td>
+                            <td class="py-3"><span class="badge bg-warning bg-opacity-10 text-warning rounded-pill px-3 fw-bold">Dummy</span></td>
+                            <td class="py-3 text-center text-muted">Contoh</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 
@@ -78,10 +129,7 @@
                             <label class="form-label small fw-bold">Nama Layanan</label>
                             <input type="text" name="nama_layanan" class="form-control rounded-3" placeholder="Contoh: Pengaduan Online" required>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label small fw-bold">Pilih Ikon (Bootstrap Icon Class)</label>
-                            <input type="text" name="ikon" class="form-control rounded-3" placeholder="Contoh: bi-envelope-fill">
-                        </div>
+
                         <div class="mb-3 text-start">
                             <label class="form-label small fw-bold">Deskripsi</label>
                             <textarea name="deskripsi" class="form-control rounded-3" rows="3" required></textarea>
@@ -90,7 +138,14 @@
                             <label class="form-label small fw-bold">Link Akses</label>
                             <input type="url" name="url" class="form-control rounded-3" placeholder="https://...">
                         </div>
-                        <button type="submit" class="btn btn-navy-dark w-100 rounded-pill fw-bold text-white py-2 mt-3 shadow">
+                        <div class="mb-4 text-start">
+                            <label class="form-label small fw-bold">Status Tampil</label>
+                            <select name="status" class="form-select rounded-3">
+                                <option value="1" selected>Aktif (Tampil)</option>
+                                <option value="0">Non-Aktif (Sembunyikan)</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-navy-dark w-100 rounded-pill fw-bold text-white py-2 shadow">
                             Simpan Layanan
                         </button>
                     </form>
@@ -99,7 +154,8 @@
         </div>
     </div>
 
-    <div class="modal fade" id="modalEdit1" tabindex="-1">
+    <?php foreach ($data_layanan as $row): ?>
+    <div class="modal fade" id="modalEdit<?php echo $row['id']; ?>" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content border-0 rounded-4 shadow-lg text-start">
                 <div class="modal-header border-0 p-4 pb-0">
@@ -108,30 +164,27 @@
                 </div>
                 <div class="modal-body p-4 text-start">
                     <form action="proses-layanan.php" method="POST">
-                        <input type="hidden" name="id_layanan" value="1">
+                        <input type="hidden" name="id_layanan" value="<?php echo $row['id']; ?>">
                         <input type="hidden" name="aksi" value="update">
 
                         <div class="mb-3">
                             <label class="form-label small fw-bold">Nama Layanan</label>
-                            <input type="text" name="nama_layanan" class="form-control rounded-3" value="SPBE" required>
+                            <input type="text" name="nama_layanan" class="form-control rounded-3" value="<?php echo $row['nama_layanan']; ?>" required>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label small fw-bold">Ikon (Bootstrap Icon)</label>
-                            <input type="text" name="ikon" class="form-control rounded-3" value="bi-diagram-3-fill">
-                        </div>
-                        <div class="mb-3 text-start text-start">
+
+                        <div class="mb-3 text-start">
                             <label class="form-label small fw-bold text-start">Deskripsi</label>
-                            <textarea name="deskripsi" class="form-control rounded-3 text-start" rows="3" required>Sistem Pemerintahan Berbasis Elektronik Kabupaten Bekasi...</textarea>
+                            <textarea name="deskripsi" class="form-control rounded-3 text-start" rows="3" required><?php echo $row['deskripsi']; ?></textarea>
                         </div>
                         <div class="mb-3">
                             <label class="form-label small fw-bold">Link Akses</label>
-                            <input type="url" name="url" class="form-control rounded-3" value="https://bekasikab.go.id">
+                            <input type="url" name="url" class="form-control rounded-3" value="<?php echo $row['url']; ?>">
                         </div>
                         <div class="mb-4 text-start">
                             <label class="form-label small fw-bold">Status Tampil</label>
                             <select name="status" class="form-select rounded-3">
-                                <option value="1" selected>Aktif (Tampil)</option>
-                                <option value="0">Non-Aktif (Sembunyikan)</option>
+                                <option value="1" <?php echo ($row['status'] == 1) ? 'selected' : ''; ?>>Aktif (Tampil)</option>
+                                <option value="0" <?php echo ($row['status'] == 0) ? 'selected' : ''; ?>>Non-Aktif (Sembunyikan)</option>
                             </select>
                         </div>
                         <button type="submit" class="btn btn-navy-dark w-100 rounded-pill fw-bold text-white py-2 shadow">
@@ -142,6 +195,7 @@
             </div>
         </div>
     </div>
+    <?php endforeach; ?>
 
     <script>
     function konfirmasiHapus(id, nama) {
@@ -157,6 +211,7 @@
             borderRadius: '15px'
         }).then((result) => {
             if (result.isConfirmed) {
+                // Redirect ke backend dengan parameter aksi=hapus
                 window.location.href = "proses-layanan.php?aksi=hapus&id=" + id;
             }
         })
