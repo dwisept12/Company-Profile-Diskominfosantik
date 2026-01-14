@@ -79,22 +79,57 @@
                 <div class="modal-body p-4 text-start">
                     <form action="proses-dokumen.php" method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="aksi" value="tambah">
-                        <div class="mb-3 text-start text-start">
-                            <label class="form-label small fw-bold text-start">Judul Dokumen</label>
+                        <div class="mb-3 text-start">
+                            <label class="form-label small fw-bold">Judul Dokumen</label>
                             <input type="text" name="judul" class="form-control rounded-3 text-start" placeholder="Masukkan judul dokumen" required>
                         </div>
-                        <div class="mb-3 text-start text-start">
-                            <label class="form-label small fw-bold text-start">Pilih Berkas</label>
+                        <div class="mb-3 text-start">
+                            <label class="form-label small fw-bold">Pilih Berkas</label>
                             <input type="file" name="file_upload" class="form-control rounded-3 text-start" accept=".pdf,.doc,.docx" required>
                         </div>
-                        <div class="mb-3 text-start text-start">
-                            <label class="form-label small fw-bold text-start">Hak Akses</label>
+                        <div class="mb-3 text-start">
+                            <label class="form-label small fw-bold">Hak Akses</label>
                             <select name="hak_akses" class="form-select rounded-3 text-start">
                                 <option value="publik">Publik (Bisa diunduh umum)</option>
                                 <option value="internal">Internal (Hanya admin)</option>
                             </select>
                         </div>
                         <button type="submit" class="btn btn-navy-dark w-100 rounded-pill fw-bold text-white py-2 mt-2 shadow text-start">Unggah Dokumen</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalEditDokumen1" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 rounded-4 shadow-lg text-start">
+                <div class="modal-header border-0 p-4 pb-0 text-start">
+                    <h5 class="fw-bold text-navy text-start">Edit Judul Dokumen</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4 text-start text-start">
+                    <form action="proses-dokumen.php" method="POST" enctype="multipart/form-data">
+                        <input type="hidden" name="id_dokumen" value="1">
+                        <input type="hidden" name="aksi" value="update">
+
+                        <div class="mb-3 text-start">
+                            <label class="form-label small fw-bold text-start">Judul Dokumen Baru</label>
+                            <input type="text" name="judul" class="form-control rounded-3 text-start" value="Rencana Strategis (RENSTRA) 2026" required>
+                        </div>
+                        <div class="mb-3 text-start">
+                            <label class="form-label small fw-bold text-start">Ganti Berkas (Opsional)</label>
+                            <input type="file" name="file_upload" class="form-control rounded-3 text-start" accept=".pdf,.doc,.docx">
+                            <small class="text-muted italic text-start d-block mt-1">Biarkan kosong jika tidak ingin mengganti file lama.</small>
+                        </div>
+                        <div class="mb-3 text-start text-start">
+                            <label class="form-label small fw-bold text-start text-start text-start">Ubah Hak Akses</label>
+                            <select name="hak_akses" class="form-select rounded-3 text-start">
+                                <option value="publik" selected>Publik (Bisa diunduh umum)</option>
+                                <option value="internal">Internal (Hanya admin)</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-navy-dark w-100 rounded-pill fw-bold text-white py-2 mt-2 shadow text-start">Simpan Perubahan</button>
                     </form>
                 </div>
             </div>
@@ -120,7 +155,6 @@
         })
     }
 
-    // Menampilkan Notifikasi Sukses dari URL
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.has('status')) {
         const status = urlParams.get('status');
@@ -128,6 +162,8 @@
             Swal.fire({ title: 'Terhapus!', text: 'Dokumen telah berhasil dihapus.', icon: 'success', confirmButtonColor: '#003366' });
         } else if (status === 'sukses_unggah') {
             Swal.fire({ title: 'Berhasil!', text: 'Dokumen baru telah diunggah.', icon: 'success', confirmButtonColor: '#003366' });
+        } else if (status === 'sukses_update') {
+            Swal.fire({ title: 'Berhasil!', text: 'Dokumen telah diperbarui.', icon: 'success', confirmButtonColor: '#003366' });
         }
     }
     </script>
