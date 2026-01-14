@@ -19,17 +19,17 @@
                 <h3 class="fw-bold text-navy mb-1">Ringkasan Statistik</h3>
                 <p class="text-muted small">Selamat datang kembali, Admin Diskominfosantik.</p>
             </div>
-            <div class="d-flex align-items-center gap-3">
+            <!-- <div class="d-flex align-items-center gap-3">
                 <span class="badge bg-success bg-opacity-10 text-success p-2">Sistem Online</span>
                 <img src="https://via.placeholder.com/40" class="rounded-circle shadow-sm border border-2 border-white">
-            </div>
+            </div> -->
         </header>
 
         <div class="row g-4 mb-5">
             <div class="col-md-3">
                 <div class="card stat-card shadow-sm p-4 bg-white">
                     <div class="d-flex justify-content-between mb-3">
-                        <div class="icon-box bg-primary bg-opacity-10 text-primary mb-0"><i class="bi bi-newspaper h4 mb-0"></i></div>
+                        <div class="icon-box text-primary mb-0" style="background-color: #f0f4ff !important;"><i class="bi bi-newspaper h4 mb-0"></i></div>
                         <span class="text-success small fw-bold">+12%</span>
                     </div>
                     <h6 class="text-muted fw-semibold">Jumlah Berita</h6>
@@ -39,7 +39,7 @@
             <div class="col-md-3">
                 <div class="card stat-card shadow-sm p-4 bg-white">
                     <div class="d-flex justify-content-between mb-3">
-                        <div class="icon-box bg-success bg-opacity-10 text-success mb-0"><i class="bi bi-grid h4 mb-0"></i></div>
+                        <div class="icon-box text-success mb-0" style="background-color: #f0f4ff !important;"><i class="bi bi-grid h4 mb-0"></i></div>
                     </div>
                     <h6 class="text-muted fw-semibold">Layanan Aktif</h6>
                     <h2 class="fw-bold text-navy mb-0">(bayaknya layanan  Aktif)</h2>
@@ -48,7 +48,7 @@
             <div class="col-md-3">
                 <div class="card stat-card shadow-sm p-4 bg-white">
                     <div class="d-flex justify-content-between mb-3">
-                        <div class="icon-box bg-warning bg-opacity-10 text-warning mb-0"><i class="bi bi-envelope h4 mb-0"></i></div>
+                        <div class="icon-box text-warning mb-0" style="background-color: #f0f4ff !important;"><i class="bi bi-envelope h4 mb-0"></i></div>
                     </div>
                     <h6 class="text-muted fw-semibold">Pesan Masuk</h6>
                     <h2 class="fw-bold text-navy mb-0">(Banyaknya Pesan Masuk)</h2>
@@ -57,7 +57,7 @@
             <div class="col-md-3">
                 <div class="card stat-card shadow-sm p-4 bg-white">
                     <div class="d-flex justify-content-between mb-3">
-                        <div class="icon-box bg-info bg-opacity-10 text-info mb-0"><i class="bi bi-people h4 mb-0"></i></div>
+                        <div class="icon-box text-info mb-0" style="background-color: #f0f4ff !important;"><i class="bi bi-people h4 mb-0"></i></div>
                     </div>
                     <h6 class="text-muted fw-semibold">Total Pegawai</h6>
                     <h2 class="fw-bold text-navy mb-0">(Banyaknya total pegawai)</h2>
@@ -70,7 +70,7 @@
                 <div class="card border-0 shadow-sm rounded-4 p-4">
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <h5 class="fw-bold text-navy mb-0">Berita Terbit Terakhir</h5>
-                        <a href="tambah-berita-admin.php" class="btn btn-navy-dark btn-sm rounded-pill px-3">+ Tambah Baru</a>
+                        <a href="berita-admin.php" class="btn btn-navy-dark btn-sm rounded-pill px-3">+ Tambah Baru</a>
                     </div>
                     <div class="table-responsive">
                         <table class="table align-middle">

@@ -56,7 +56,7 @@
                             <tr>
                                 <td class="ps-4 py-4">
                                     <div class="d-flex align-items-center">
-                                        <div class="icon-box bg-danger bg-opacity-10 text-danger me-3 mb-0" style="width: 40px; height: 40px;">
+                                        <div class="icon-box text-danger me-3 mb-0" style="width: 40px; height: 40px; background-color: #f0f4ff !important;">
                                             <i class="bi bi-file-earmark-pdf"></i>
                                         </div>
                                         <div>
@@ -76,7 +76,7 @@
                             <tr>
                                 <td class="ps-4 py-4">
                                     <div class="d-flex align-items-center">
-                                        <div class="icon-box bg-success bg-opacity-10 text-success me-3 mb-0" style="width: 40px; height: 40px;">
+                                        <div class="icon-box text-success me-3 mb-0" style="width: 40px; height: 40px; background-color: #f0f4ff !important;">
                                             <i class="bi bi-file-earmark-spreadsheet"></i>
                                         </div>
                                         <div>

@@ -23,9 +23,9 @@
             <div class="row g-4">
                 <div class="col-12">
                     <div class="card card-editor p-4 mb-4">
-                        <div class="d-flex align-items-center mb-4">
-                            <div class="icon-box bg-primary bg-opacity-10 text-primary me-3"><i class="bi bi-window-fullscreen"></i></div>
-                            <h5 class="fw-bold text-navy mb-0">Hero Section (Sambutan Utama)</h5>
+                        <div class="d-flex align-items-start mb-4">
+                            <div class="icon-box text-navy me-3 flex-shrink-0" style="background-color: #f0f4ff !important;"><i class="bi bi-window-fullscreen"></i></div>
+                            <h5 class="fw-bold text-navy mb-0 mt-2">Hero Section (Sambutan Utama)</h5>
                         </div>
                         <div class="mb-3">
                             <label class="form-label small fw-bold">Judul Utama (Headline)</label>

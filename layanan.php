@@ -25,11 +25,11 @@
 
     <section class="py-5">
         <div class="container py-5">
-            <div class="row g-4">
-                <div class="col-lg-3 col-md-6 text-start">
-                    <div class="card service-card p-4 h-100 border-0 shadow-sm">
-                        <div class="icon-box bg-primary bg-opacity-10 text-primary mb-4">
-                            <i class="bi bi-cpu h4 mb-0"></i>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-4">
+                    <div class="card service-card p-4 h-100 border-0 shadow-sm text-center">
+                        <div class="icon-box bg-navy bg-opacity-10 text-navy mb-4">
+                            <span class="service-number">1</span>
                         </div>
                         <h5 class="fw-bold text-navy mb-2">Layanan 1</h5>
                         <p class="small text-muted mb-4">Deskripsi singkat mengenai fungsionalitas dan tujuan dari Layanan 1.</p>
@@ -37,10 +37,10 @@
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-md-6 text-start">
-                    <div class="card service-card p-4 h-100 border-0 shadow-sm">
-                        <div class="icon-box bg-success bg-opacity-10 text-success mb-4">
-                            <i class="bi bi-shield-check h4 mb-0"></i>
+                <div class="col-md-4">
+                    <div class="card service-card p-4 h-100 border-0 shadow-sm text-center">
+                        <div class="icon-box bg-navy bg-opacity-10 text-navy mb-4">
+                            <span class="service-number">2</span>
                         </div>
                         <h5 class="fw-bold text-navy mb-2">Layanan 2</h5>
                         <p class="small text-muted mb-4">Deskripsi singkat mengenai fungsionalitas dan tujuan dari Layanan 2.</p>
@@ -48,10 +48,10 @@
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-md-6 text-start">
-                    <div class="card service-card p-4 h-100 border-0 shadow-sm">
-                        <div class="icon-box bg-info bg-opacity-10 text-info mb-4">
-                            <i class="bi bi-phone h4 mb-0"></i>
+                <div class="col-md-4">
+                    <div class="card service-card p-4 h-100 border-0 shadow-sm text-center">
+                        <div class="icon-box bg-navy bg-opacity-10 text-navy mb-4">
+                            <span class="service-number">3</span>
                         </div>
                         <h5 class="fw-bold text-navy mb-2">Layanan 3</h5>
                         <p class="small text-muted mb-4">Deskripsi singkat mengenai fungsionalitas dan tujuan dari Layanan 3.</p>
@@ -59,10 +59,10 @@
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-md-6 text-start">
-                    <div class="card service-card p-4 h-100 border-0 shadow-sm">
-                        <div class="icon-box bg-warning bg-opacity-10 text-warning mb-4">
-                            <i class="bi bi-database-fill h4 mb-0"></i>
+                <div class="col-md-4">
+                    <div class="card service-card p-4 h-100 border-0 shadow-sm text-center">
+                        <div class="icon-box bg-navy bg-opacity-10 text-navy mb-4">
+                            <span class="service-number">4</span>
                         </div>
                         <h5 class="fw-bold text-navy mb-2">Layanan 4</h5>
                         <p class="small text-muted mb-4">Deskripsi singkat mengenai fungsionalitas dan tujuan dari Layanan 4.</p>
