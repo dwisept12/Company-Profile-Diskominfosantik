@@ -465,9 +465,11 @@ footer {
   position: fixed;
   background: #003366;
   color: white;
-  overflow-y: auto;
+  overflow: hidden;
   transition: all 0.3s;
   z-index: 1000;
+  display: flex;
+  flex-direction: column;
 }
 
 .nav-admin-link {
@@ -479,6 +481,9 @@ footer {
   border-radius: 10px;
   margin: 2px 15px;
   transition: 0.3s;
+  flex-shrink: 0;
+  font-size: 16px;
+  font-weight: 500;
 }
 
 .nav-admin-link:hover,

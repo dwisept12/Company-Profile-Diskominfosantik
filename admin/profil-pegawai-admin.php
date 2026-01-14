@@ -18,7 +18,7 @@
     <div class="main-content text-start">
         <header class="mb-5 d-flex justify-content-between align-items-center text-start">
             <div>
-                <h3 class="fw-bold text-navy mb-1 text-start">Profil Tim / Pegawai</h3>
+                <h3 class="fw-bold text-navy mb-1 text-start">Profil Pegawai</h3>
                 <p class="text-muted small text-start">Kelola data pejabat, tugas, dan riwayat pendidikan staf.</p>
             </div>
             <button class="btn btn-navy-dark rounded-pill px-4 shadow hover-effect text-start" data-bs-toggle="modal" data-bs-target="#modalTambahPegawai">

@@ -43,7 +43,7 @@
                     <div class="row g-4 justify-content-center text-start">
                         <div class="col-md-4">
                             <div class="card p-4 h-100 border-0 shadow-sm" style="border-radius: 20px;">
-                                <div class="icon-box bg-warning bg-opacity-10 text-warning mb-3">
+                                <div class="icon-box text-navy mb-3" style="background-color: #f0f4ff !important;">
                                     <span class="h4 fw-bold mb-0">01</span>
                                 </div>
                                 <h5 class="fw-bold text-navy">Transformasi Digital</h5>
@@ -52,7 +52,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="card p-4 h-100 border-0 shadow-sm" style="border-radius: 20px;">
-                                <div class="icon-box bg-success bg-opacity-10 text-success mb-3">
+                                <div class="icon-box text-navy mb-3" style="background-color: #f0f4ff !important;">
                                     <span class="h4 fw-bold mb-0">02</span>
                                 </div>
                                 <h5 class="fw-bold text-navy">Literasi Informasi</h5>
@@ -61,7 +61,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="card p-4 h-100 border-0 shadow-sm" style="border-radius: 20px;">
-                                <div class="icon-box bg-info bg-opacity-10 text-info mb-3">
+                                <div class="icon-box text-navy mb-3" style="background-color: #f0f4ff !important;">
                                     <span class="h4 fw-bold mb-0">03</span>
                                 </div>
                                 <h5 class="fw-bold text-navy">Keamanan Data</h5>
