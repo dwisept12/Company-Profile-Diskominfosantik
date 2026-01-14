@@ -70,7 +70,7 @@
                 <div class="card border-0 shadow-sm rounded-4 p-4">
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <h5 class="fw-bold text-navy mb-0">Berita Terbit Terakhir</h5>
-                        <a href="tambah-berita-admin.php" class="btn btn-navy-dark btn-sm rounded-pill px-3">+ Tambah Baru</a>
+                        <a href="berita-admin.php" class="btn btn-navy-dark btn-sm rounded-pill px-3">+ Tambah Baru</a>
                     </div>
                     <div class="table-responsive">
                         <table class="table align-middle">
