@@ -1,3 +1,10 @@
+<?php
+session_start();
+if ($_SESSION['status_login'] != true) {
+    header("Location: login.php"); // Jika belum login, paksa ke halaman login
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>

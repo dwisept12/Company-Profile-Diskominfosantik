@@ -1,5 +1,10 @@
-<!DOCTYPE html>
-<html lang="id">
+<?php
+session_start();
+if ($_SESSION['status_login'] != true) {
+    header("Location: login.php"); // Jika belum login, paksa ke halaman login
+    exit();
+}
+?><!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

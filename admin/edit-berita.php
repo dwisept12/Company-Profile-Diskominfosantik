@@ -1,3 +1,10 @@
+<?php
+session_start();
+if ($_SESSION['status_login'] != true) {
+    header("Location: login.php"); // Jika belum login, paksa ke halaman login
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -19,7 +26,7 @@
                 <h3 class="fw-bold text-navy mb-1">Edit Berita</h3>
                 <p class="text-muted small">Perbarui informasi berita yang sudah diterbitkan.</p>
             </div>
-            <a href="berita-admin.php" class="btn btn-outline-secondary rounded-pill px-4">
+            <a href="tambah-berita-admin.php" class="btn btn-outline-secondary rounded-pill px-4">
                 <i class="bi bi-arrow-left me-2"></i> Kembali
             </a>
         </header>

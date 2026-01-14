@@ -27,31 +27,34 @@
         </div>
 
         <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
-            <table class="table align-middle mb-0 table-hover">
-                <thead class="bg-light border-bottom">
+            <table class="table align-middle mb-0">
+                <thead class="bg-white border-bottom text-navy">
                     <tr>
-                        <th class="ps-4 py-3 fw-bold">No.</th>
-                        <th class="py-3 fw-bold">Nama Layanan</th>
-                        <th class="py-3 fw-bold">Deskripsi Singkat</th>
-                        <th class="py-3 fw-bold">Status</th>
-                        <th class="py-3 fw-bold text-center">Aksi</th>
+                        <th class="ps-4 py-3">Ikon</th>
+                        <th>Nama Layanan</th>
+                        <th>Deskripsi Singkat</th>
+                        <th>Status</th>
+                        <th class="text-center">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="ps-4 py-3"><span class="fw-bold">1</span></td>
-                        <td class="py-3"><span class="fw-bold">SPBE</span></td>
-                        <td class="py-3"><small class="text-muted">Sistem Pemerintahan Berbasis Elektronik...</small></td>
-                        <td class="py-3"><span class="badge bg-success bg-opacity-10 text-success rounded-pill px-3 fw-bold">Aktif</span></td>
-                        <td class="py-3 text-center">
-                            <button class="btn btn-sm btn-outline-primary rounded-2 me-1" data-bs-toggle="modal" data-bs-target="#modalEdit1" title="Edit">
+                        <td class="ps-4">
+                            <div class="icon-box bg-primary bg-opacity-10 text-primary mb-0" style="width: 45px; height: 45px;">
+                                <i class="bi bi-diagram-3-fill"></i>
+                            </div>
+                        </td>
+                        <td><span class="fw-bold">SPBE</span></td>
+                        <td><small class="text-muted">Sistem Pemerintahan Berbasis Elektronik...</small></td>
+                        <td><span class="badge bg-success bg-opacity-10 text-success rounded-pill px-3">Aktif</span></td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-light text-primary me-2" data-bs-toggle="modal" data-bs-target="#modalEdit1">
                                 <i class="bi bi-pencil-square"></i>
                             </button>
                             
                             <button type="button" 
-                               class="btn btn-sm btn-outline-danger rounded-2" 
-                               onclick="konfirmasiHapus(1, 'SPBE')"
-                               title="Hapus">
+                               class="btn btn-sm btn-light text-danger" 
+                               onclick="konfirmasiHapus(1, 'SPBE')">
                                 <i class="bi bi-trash"></i>
                             </button>
                         </td>
@@ -75,6 +78,10 @@
                             <label class="form-label small fw-bold">Nama Layanan</label>
                             <input type="text" name="nama_layanan" class="form-control rounded-3" placeholder="Contoh: Pengaduan Online" required>
                         </div>
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Pilih Ikon (Bootstrap Icon Class)</label>
+                            <input type="text" name="ikon" class="form-control rounded-3" placeholder="Contoh: bi-envelope-fill">
+                        </div>
                         <div class="mb-3 text-start">
                             <label class="form-label small fw-bold">Deskripsi</label>
                             <textarea name="deskripsi" class="form-control rounded-3" rows="3" required></textarea>
@@ -83,14 +90,7 @@
                             <label class="form-label small fw-bold">Link Akses</label>
                             <input type="url" name="url" class="form-control rounded-3" placeholder="https://...">
                         </div>
-                        <div class="mb-4 text-start">
-                            <label class="form-label small fw-bold">Status Tampil</label>
-                            <select name="status" class="form-select rounded-3">
-                                <option value="1" selected>Aktif (Tampil)</option>
-                                <option value="0">Non-Aktif (Sembunyikan)</option>
-                            </select>
-                        </div>
-                        <button type="submit" class="btn btn-navy-dark w-100 rounded-pill fw-bold text-white py-2 shadow">
+                        <button type="submit" class="btn btn-navy-dark w-100 rounded-pill fw-bold text-white py-2 mt-3 shadow">
                             Simpan Layanan
                         </button>
                     </form>
@@ -115,7 +115,11 @@
                             <label class="form-label small fw-bold">Nama Layanan</label>
                             <input type="text" name="nama_layanan" class="form-control rounded-3" value="SPBE" required>
                         </div>
-                        <div class="mb-3 text-start">
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Ikon (Bootstrap Icon)</label>
+                            <input type="text" name="ikon" class="form-control rounded-3" value="bi-diagram-3-fill">
+                        </div>
+                        <div class="mb-3 text-start text-start">
                             <label class="form-label small fw-bold text-start">Deskripsi</label>
                             <textarea name="deskripsi" class="form-control rounded-3 text-start" rows="3" required>Sistem Pemerintahan Berbasis Elektronik Kabupaten Bekasi...</textarea>
                         </div>

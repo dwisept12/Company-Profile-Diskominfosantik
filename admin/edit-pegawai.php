@@ -1,4 +1,18 @@
+<?php
+session_start();
+if ($_SESSION['status_login'] != true) {
+    header("Location: login.php"); // Jika belum login, paksa ke halaman login
+    exit();
+}
+?>
 <!DOCTYPE html>
+<?php
+session_start();
+if ($_SESSION['status_login'] != true) {
+    header("Location: login.php"); // Jika belum login, paksa ke halaman login
+    exit();
+}
+?>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
