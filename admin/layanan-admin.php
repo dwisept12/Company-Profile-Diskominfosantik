@@ -215,16 +215,43 @@ $result = mysqli_query($koneksi, $query);
                 window.location.href = "proses-layanan.php?aksi=hapus&id=" + id;
             }
         })
+        window.history.replaceState(null, null, window.location.pathname);
     }
 
     // Menampilkan Notifikasi Berhasil dari URL (Redirect dari proses-layanan.php)
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.has('status')) {
         const status = urlParams.get('status');
+        let title = '';
+        let text = '';
+        let icon = '';
+
         if (status === 'sukses_hapus') {
-            Swal.fire({ title: 'Terhapus!', text: 'Layanan berhasil dihapus.', icon: 'success', confirmButtonColor: '#003366' });
+            title = 'Terhapus!';
+            text = 'Layanan berhasil dihapus.';
+            icon = 'success';
         } else if (status === 'sukses') {
-            Swal.fire({ title: 'Berhasil!', text: 'Data layanan telah disimpan.', icon: 'success', confirmButtonColor: '#003366' });
+            title = 'Berhasil!';
+            text = 'Layanan telah disimpan.';
+            icon = 'success';
+        } else if (status === 'gagal') {
+            const errorCode = urlParams.get('code'); 
+            const errorMsg = decodeURIComponurlParams.get('msg'));
+            title = 'Gagal Menyimpan!';
+            // Tampilkan Kode Error agar terlihat keren dan informatif
+            text = 'Error (' + errorCode + '): ' + errorMsg;
+            icon = 'error';
+        }
+        if (title) {
+            Swal.fire({
+                title: title,
+                text: text,
+                icon: icon,
+                showConfirmButton: (icon === 'error'), // Jika error, munculkan tombol OK agar admin membaca
+                confirmButtonColor: '#003366',
+                timer: (icon === 'error') ? 0 : 2000 // Jika error, jangan pakai timer (biar tidak hilang sendiri)
+            });
+            window.history.replaceState(null, null, window.location.pathname);
         }
     }
     </script>

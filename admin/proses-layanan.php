@@ -17,7 +17,7 @@ if (isset($_GET['aksi']) && $_GET['aksi'] == 'hapus') {
         // Redirect dengan parameter 'sukses_hapus' (untuk SweetAlert)
         header("Location: layanan-admin.php?status=sukses_hapus");
     } else {
-        echo "Gagal menghapus: " . mysqli_error($koneksi);
+        header("Location: layanan-admin.php?status=gagal");
     }
     exit();
 }
@@ -53,12 +53,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Eksekusi Query
     $result = mysqli_query($koneksi, $query);
-
     if ($result) {
-        // Redirect dengan parameter 'sukses' (untuk SweetAlert)
-        header("Location: layanan-admin.php?status=sukses");
+        if ($aksi == 'hapus') {
+            header("Location: layanan-admin.php?status=sukses_hapus");
+        } else {
+            header("Location: layanan-admin.php?status=sukses");
+        }
     } else {
-        echo "Gagal menyimpan data: " . mysqli_error($koneksi);
+        // --- LOGIKA GAGAL DIPERBARUI ---
+        // 1. Ambil Angka Error (Contoh: 1062)
+        $error_code = mysqli_errno($koneksi);
+        // 2. Ambil Pesan Error Lengkap (Contoh: Duplicate entry 'SPBE' for key...)
+        $error_msg = urlencode(mysqli_error($koneksi));
+        header("Location: layanan-admin.php?status=gagal&code=$error_code&msg=$error_msg");
     }
     exit();
 }
