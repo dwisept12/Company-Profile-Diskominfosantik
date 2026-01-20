@@ -4,6 +4,7 @@ if ($_SESSION['status_login'] != true) {
     header("Location: login.php"); // Jika belum login, paksa ke halaman login
     exit();
 }
+include 'db.php'; // Include koneksi database
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -47,27 +48,68 @@ if ($_SESSION['status_login'] != true) {
                                 </tr>
                             </thead>
                             <tbody class="text-start">
+                                <?php
+                                // Mengambil data dari database
+                                $query = mysqli_query($koneksi, "SELECT * FROM dokumen ORDER BY id DESC");
+                                while($data = mysqli_fetch_array($query)) {
+                                ?>
                                 <tr>
                                     <td class="ps-4 py-3 text-start">
                                         <div class="d-flex align-items-center text-start">
                                             <i class="bi bi-file-earmark-pdf-fill text-danger fs-4 me-3"></i>
-                                            <span class="fw-bold">Rencana Strategis (RENSTRA) 2026</span>
+                                            <span class="fw-bold"><?php echo $data['nama']; ?></span> 
                                         </div>
                                     </td>
-                                    <td class="text-start"><span class="badge bg-info bg-opacity-10 text-info px-3 py-2 rounded-pill">Laporan</span></td>
-                                    <td class="text-start"><span class="small fw-semibold text-muted text-start"><i class="bi bi-globe me-1"></i> Publik</span></td>
+                                    <td class="text-start"><span class="badge bg-info bg-opacity-10 text-info px-3 py-2 rounded-pill"><?php echo $data['kategori']; ?></span></td>
+                                    <td class="text-start"><span class="small fw-semibold text-muted text-start"><i class="bi bi-globe me-1"></i> <?php echo ucfirst($data['hak_akses']); ?></span></td>
                                     <td class="text-center text-start">
-                                        <button class="btn btn-sm btn-light text-primary me-1 text-start" data-bs-toggle="modal" data-bs-target="#modalEditDokumen1">
+                                        <button class="btn btn-sm btn-light text-primary me-1 text-start" data-bs-toggle="modal" data-bs-target="#modalEditDokumen<?php echo $data['id']; ?>">
                                             <i class="bi bi-pencil-square"></i>
                                         </button>
                                         
                                         <button type="button" 
                                                 class="btn btn-sm btn-light text-danger text-start" 
-                                                onclick="konfirmasiHapus(1, 'Rencana Strategis (RENSTRA) 2026')">
+                                                onclick="konfirmasiHapus(<?php echo $data['id']; ?>, '<?php echo $data['nama']; ?>')">
                                             <i class="bi bi-trash"></i>
                                         </button>
                                     </td>
                                 </tr>
+
+                                <div class="modal fade" id="modalEditDokumen<?php echo $data['id']; ?>" tabindex="-1">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content border-0 rounded-4 shadow-lg text-start">
+                                            <div class="modal-header border-0 p-4 pb-0 text-start">
+                                                <h5 class="fw-bold text-navy text-start">Edit Judul Dokumen</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                            </div>
+                                            <div class="modal-body p-4 text-start">
+                                                <form action="proses-dokumen.php" method="POST" enctype="multipart/form-data">
+                                                    <input type="hidden" name="id_dokumen" value="<?php echo $data['id']; ?>">
+                                                    <input type="hidden" name="aksi" value="update">
+
+                                                    <div class="mb-3 text-start">
+                                                        <label class="form-label small fw-bold text-start">Judul Dokumen Baru</label>
+                                                        <input type="text" name="judul" class="form-control rounded-3 text-start" value="<?php echo $data['nama']; ?>" required>
+                                                    </div>
+                                                    <div class="mb-3 text-start">
+                                                        <label class="form-label small fw-bold text-start">Ganti Berkas (Opsional)</label>
+                                                        <input type="file" name="file_upload" class="form-control rounded-3 text-start" accept=".pdf,.doc,.docx">
+                                                        <small class="text-muted italic text-start d-block mt-1">File saat ini: <?php echo $data['nama_file']; ?></small>
+                                                    </div>
+                                                    <div class="mb-3 text-start text-start">
+                                                        <label class="form-label small fw-bold text-start text-start text-start">Ubah Hak Akses</label>
+                                                        <select name="hak_akses" class="form-select rounded-3 text-start">
+                                                            <option value="publik" <?php if($data['hak_akses'] == 'publik') echo 'selected'; ?>>Publik (Bisa diunduh umum)</option>
+                                                            <option value="internal" <?php if($data['hak_akses'] == 'internal') echo 'selected'; ?>>Internal (Hanya admin)</option>
+                                                        </select>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-navy-dark w-100 rounded-pill fw-bold text-white py-2 shadow text-start">Simpan Perubahan</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php } // Akhir While Loop ?>
                             </tbody>
                         </table>
                     </div>
@@ -86,57 +128,22 @@ if ($_SESSION['status_login'] != true) {
                 <div class="modal-body p-4 text-start">
                     <form action="proses-dokumen.php" method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="aksi" value="tambah">
-                        <div class="mb-3 text-start">
-                            <label class="form-label small fw-bold">Judul Dokumen</label>
+                        <div class="mb-3 text-start text-start">
+                            <label class="form-label small fw-bold text-start">Judul Dokumen</label>
                             <input type="text" name="judul" class="form-control rounded-3 text-start" placeholder="Masukkan judul dokumen" required>
                         </div>
-                        <div class="mb-3 text-start">
-                            <label class="form-label small fw-bold">Pilih Berkas</label>
+                        <div class="mb-3 text-start text-start">
+                            <label class="form-label small fw-bold text-start">Pilih Berkas</label>
                             <input type="file" name="file_upload" class="form-control rounded-3 text-start" accept=".pdf,.doc,.docx" required>
                         </div>
-                        <div class="mb-3 text-start">
-                            <label class="form-label small fw-bold">Hak Akses</label>
+                        <div class="mb-3 text-start text-start">
+                            <label class="form-label small fw-bold text-start">Hak Akses</label>
                             <select name="hak_akses" class="form-select rounded-3 text-start">
                                 <option value="publik">Publik (Bisa diunduh umum)</option>
                                 <option value="internal">Internal (Hanya admin)</option>
                             </select>
                         </div>
-                        <button type="submit" class="btn btn-navy-dark w-100 rounded-pill fw-bold text-white py-2 shadow">Unggah Dokumen</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="modalEditDokumen1" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content border-0 rounded-4 shadow-lg text-start">
-                <div class="modal-header border-0 p-4 pb-0 text-start">
-                    <h5 class="fw-bold text-navy text-start">Edit Judul Dokumen</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body p-4 text-start text-start">
-                    <form action="proses-dokumen.php" method="POST" enctype="multipart/form-data">
-                        <input type="hidden" name="id_dokumen" value="1">
-                        <input type="hidden" name="aksi" value="update">
-
-                        <div class="mb-3 text-start">
-                            <label class="form-label small fw-bold text-start">Judul Dokumen Baru</label>
-                            <input type="text" name="judul" class="form-control rounded-3 text-start" value="Rencana Strategis (RENSTRA) 2026" required>
-                        </div>
-                        <div class="mb-3 text-start">
-                            <label class="form-label small fw-bold text-start">Ganti Berkas (Opsional)</label>
-                            <input type="file" name="file_upload" class="form-control rounded-3 text-start" accept=".pdf,.doc,.docx">
-                            <small class="text-muted italic text-start d-block mt-1">Biarkan kosong jika tidak ingin mengganti file lama.</small>
-                        </div>
-                        <div class="mb-3 text-start text-start">
-                            <label class="form-label small fw-bold text-start text-start text-start">Ubah Hak Akses</label>
-                            <select name="hak_akses" class="form-select rounded-3 text-start">
-                                <option value="publik" selected>Publik (Bisa diunduh umum)</option>
-                                <option value="internal">Internal (Hanya admin)</option>
-                            </select>
-                        </div>
-                        <button type="submit" class="btn btn-navy-dark w-100 rounded-pill fw-bold text-white py-2 shadow">Simpan Perubahan</button>
+                        <button type="submit" class="btn btn-navy-dark w-100 rounded-pill fw-bold text-white py-2 mt-2 shadow text-start">Unggah Dokumen</button>
                     </form>
                 </div>
             </div>
@@ -144,10 +151,10 @@ if ($_SESSION['status_login'] != true) {
     </div>
 
     <script>
-    function konfirmasiHapus(id, judul) {
+    function konfirmasiHapus(id, nama) {
         Swal.fire({
             title: 'Hapus Dokumen?',
-            text: "Dokumen '" + judul + "' akan dihapus permanen dari server.",
+            text: "Dokumen '" + nama + "' akan dihapus permanen.",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#003366', // Warna Navy Admin
