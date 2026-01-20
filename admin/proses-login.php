@@ -2,8 +2,8 @@
 session_start(); // Memulai sesi keamanan
 include 'db.php';
 
-$username_admin = "admin_kominfo"; // Contoh username tetap (Ganti dengan data DB nanti)
-$password_admin = "Kominfo2026!"; // Contoh password tetap (Ganti dengan data DB nanti)
+$username_admin = "admin_kominfo";
+$password_admin = "Kominfo2026!";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $user = $_POST['username'];

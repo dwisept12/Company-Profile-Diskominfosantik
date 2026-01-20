@@ -101,7 +101,7 @@ if ($_SESSION['status_login'] != true) {
                                 <option value="internal">Internal (Hanya admin)</option>
                             </select>
                         </div>
-                        <button type="submit" class="btn btn-navy-dark w-100 rounded-pill fw-bold text-white py-2 mt-2 shadow text-start">Unggah Dokumen</button>
+                        <button type="submit" class="btn btn-navy-dark w-100 rounded-pill fw-bold text-white py-2 shadow">Unggah Dokumen</button>
                     </form>
                 </div>
             </div>
@@ -136,7 +136,7 @@ if ($_SESSION['status_login'] != true) {
                                 <option value="internal">Internal (Hanya admin)</option>
                             </select>
                         </div>
-                        <button type="submit" class="btn btn-navy-dark w-100 rounded-pill fw-bold text-white py-2 mt-2 shadow text-start">Simpan Perubahan</button>
+                        <button type="submit" class="btn btn-navy-dark w-100 rounded-pill fw-bold text-white py-2 shadow">Simpan Perubahan</button>
                     </form>
                 </div>
             </div>

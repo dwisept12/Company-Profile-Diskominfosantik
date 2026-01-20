@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 19 Jan 2026 pada 12.55
+-- Waktu pembuatan: 20 Jan 2026 pada 04.15
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.2.12
 
@@ -30,6 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `berita` (
   `id` int(11) NOT NULL,
   `judul` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
   `kategori` varchar(50) NOT NULL,
   `isi` longtext NOT NULL,
   `gambar` varchar(255) NOT NULL,
@@ -147,7 +148,7 @@ ALTER TABLE `layanan`
 -- AUTO_INCREMENT untuk tabel `pegawai`
 --
 ALTER TABLE `pegawai`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

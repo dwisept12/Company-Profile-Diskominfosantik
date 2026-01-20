@@ -35,7 +35,7 @@ $nav_items = [
             
             <hr class="text-white opacity-25 my-2 mx-3">
             
-            <a href="../index.html" class="nav-admin-link text-danger fw-bold">
+            <a href="logout.php" onclick="logout(); return false;" class="nav-admin-link text-danger fw-bold">
                 <i class="bi bi-box-arrow-right me-3"></i> Logout
             </a>
         </div>
