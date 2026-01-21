@@ -1,3 +1,12 @@
+<?php
+// Hubungkan ke database
+include '../admin/db.php'; 
+
+// Ambil data layanan aktif
+$query = "SELECT * FROM layanan WHERE status = 1 ORDER BY id DESC";
+$result = mysqli_query($koneksi, $query);
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -26,51 +35,51 @@
     <section class="py-5">
         <div class="container py-5">
             <div class="row g-4 justify-content-center">
-                <div class="col-md-4">
+                
+                <?php 
+                if(mysqli_num_rows($result) > 0) {
+                    $no = 1; 
+                    while($row = mysqli_fetch_assoc($result)) {
+                ?>
+                
+                <div class="col-md-4 col-lg-3">
                     <div class="card service-card p-4 h-100 border-0 shadow-sm text-center">
-                        <div class="icon-box bg-navy bg-opacity-10 text-navy mb-4">
-                            <span class="service-number">1</span>
+                        
+                        <div class="icon-box mb-4 mx-auto d-flex align-items-center justify-content-center" 
+                             style="width: 70px; height: 70px; border-radius: 50%; border: 2px solid #003366 !important; background-color: transparent !important; box-shadow: none !important;">
+                            
+                            <span class="fw-bold fs-3" style="color: #003366 !important;"><?php echo $no; ?></span>
+                            
                         </div>
-                        <h5 class="fw-bold text-navy mb-2">Layanan 1</h5>
-                        <p class="small text-muted mb-4">Deskripsi singkat mengenai fungsionalitas dan tujuan dari Layanan 1.</p>
-                        <a href="#" class="btn btn-link text-navy p-0 fw-bold text-decoration-none mt-auto">Akses Layanan <i class="bi bi-arrow-right ms-1"></i></a>
+
+                        <h5 class="fw-bold text-navy mb-2"><?php echo $row['nama_layanan']; ?></h5>
+                        
+                        <p class="small text-muted mb-4">
+                            <?php echo substr($row['deskripsi'], 0, 100) . '...'; ?>
+                        </p>
+
+                        <a href="<?php echo $row['url']; ?>" target="_blank" class="btn btn-link text-navy p-0 fw-bold text-decoration-none mt-auto">
+                            Akses Layanan <i class="bi bi-arrow-right ms-1"></i>
+                        </a>
+
                     </div>
                 </div>
 
-                <div class="col-md-4">
-                    <div class="card service-card p-4 h-100 border-0 shadow-sm text-center">
-                        <div class="icon-box bg-navy bg-opacity-10 text-navy mb-4">
-                            <span class="service-number">2</span>
+                <?php 
+                    $no++; 
+                    } 
+                } else {
+                ?>
+                    <div class="col-12 text-center py-5">
+                        <div class="mb-3">
+                            <i class="bi bi-hdd-stack text-muted" style="font-size: 3rem; opacity: 0.3;"></i>
                         </div>
-                        <h5 class="fw-bold text-navy mb-2">Layanan 2</h5>
-                        <p class="small text-muted mb-4">Deskripsi singkat mengenai fungsionalitas dan tujuan dari Layanan 2.</p>
-                        <a href="#" class="btn btn-link text-navy p-0 fw-bold text-decoration-none mt-auto">Akses Layanan <i class="bi bi-arrow-right ms-1"></i></a>
+                        <h6 class="text-muted fw-bold">Belum ada layanan</h6>
+                        <p class="text-muted small">Layanan digital akan segera tersedia.</p>
                     </div>
-                </div>
+                <?php } ?>
 
-                <div class="col-md-4">
-                    <div class="card service-card p-4 h-100 border-0 shadow-sm text-center">
-                        <div class="icon-box bg-navy bg-opacity-10 text-navy mb-4">
-                            <span class="service-number">3</span>
-                        </div>
-                        <h5 class="fw-bold text-navy mb-2">Layanan 3</h5>
-                        <p class="small text-muted mb-4">Deskripsi singkat mengenai fungsionalitas dan tujuan dari Layanan 3.</p>
-                        <a href="#" class="btn btn-link text-navy p-0 fw-bold text-decoration-none mt-auto">Akses Layanan <i class="bi bi-arrow-right ms-1"></i></a>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card service-card p-4 h-100 border-0 shadow-sm text-center">
-                        <div class="icon-box bg-navy bg-opacity-10 text-navy mb-4">
-                            <span class="service-number">4</span>
-                        </div>
-                        <h5 class="fw-bold text-navy mb-2">Layanan 4</h5>
-                        <p class="small text-muted mb-4">Deskripsi singkat mengenai fungsionalitas dan tujuan dari Layanan 4.</p>
-                        <a href="#" class="btn btn-link text-navy p-0 fw-bold text-decoration-none mt-auto">Akses Layanan <i class="bi bi-arrow-right ms-1"></i></a>
-                    </div>
-                </div>
-
-                </div>
+            </div>
         </div>
     </section>
 
