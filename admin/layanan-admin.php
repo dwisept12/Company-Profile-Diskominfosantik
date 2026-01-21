@@ -5,6 +5,9 @@ include 'db.php';
 // 2. Ambil data dari tabel layanan (Urutkan dari yang terbaru)
 $query = "SELECT * FROM layanan ORDER BY id DESC";
 $result = mysqli_query($koneksi, $query);
+
+// 3. Hitung jumlah data
+$jumlah_layanan = mysqli_num_rows($result);
 ?>
 
 <!DOCTYPE html>
@@ -35,84 +38,91 @@ $result = mysqli_query($koneksi, $query);
             </button>
         </div>
 
-        <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
-            <div class="table-responsive">
-                <table class="table align-middle mb-0 table-hover">
-                    <thead class="bg-light border-bottom">
-                        <tr>
-                            <th class="ps-4 py-3 fw-bold">No.</th>
-                            <th class="py-3 fw-bold" style="min-width: 150px;">Nama Layanan</th>
-                            <th class="py-3 fw-bold">Link Akses</th>
-                            <th class="py-3 fw-bold">Deskripsi Singkat</th>
-                            <th class="py-3 fw-bold">Status</th>
-                            <th class="py-3 fw-bold text-center">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        
-                        <?php
-                        $no = 1;
-                        $data_layanan = []; 
-                        
-                        while ($row = mysqli_fetch_assoc($result)) {
-                            $data_layanan[] = $row; 
-                        ?>
-                        <tr>
-                            <td class="ps-4 py-3"><span class="fw-bold"><?php echo $no++; ?></span></td>
+        <?php if ($jumlah_layanan > 0) : ?>
+
+            <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+                <div class="table-responsive">
+                    <table class="table align-middle mb-0 table-hover">
+                        <thead class="bg-light border-bottom">
+                            <tr>
+                                <th class="ps-4 py-3 fw-bold">No.</th>
+                                <th class="py-3 fw-bold" style="min-width: 150px;">Nama Layanan</th>
+                                <th class="py-3 fw-bold">Link Akses</th>
+                                <th class="py-3 fw-bold">Deskripsi Singkat</th>
+                                <th class="py-3 fw-bold">Status</th>
+                                <th class="py-3 fw-bold text-center">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $no = 1;
+                            $data_layanan = []; 
                             
-                            <td class="py-3">
-                                <span class="fw-bold"><?php echo $row['nama_layanan']; ?></span>
-                            </td>
+                            // Reset pointer (opsional)
+                            mysqli_data_seek($result, 0);
 
-                            <td class="py-3">
-                                <a href="<?php echo $row['url']; ?>" target="_blank" class="text-primary text-decoration-none small fw-semibold" style="display: block; max-width: 250px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
-                                    <?php echo $row['url']; ?> <i class="bi bi-box-arrow-up-right ms-1" style="font-size: 10px;"></i>
-                                </a>
-                            </td>
-
-                            <td class="py-3">
-                                <small class="text-muted">
-                                    <?php 
-                                    echo substr($row['deskripsi'], 0, 50) . '...'; 
-                                    ?>
-                                </small>
-                            </td>
-                            <td class="py-3">
-                                <?php if ($row['status'] == 1): ?>
-                                    <span class="badge bg-success bg-opacity-10 text-success rounded-pill px-3 fw-bold">Aktif</span>
-                                <?php else: ?>
-                                    <span class="badge bg-secondary bg-opacity-10 text-secondary rounded-pill px-3 fw-bold">Non-Aktif</span>
-                                <?php endif; ?>
-                            </td>
-                            <td class="py-3 text-center">
-                                <button class="btn btn-sm btn-outline-primary rounded-2 me-1" data-bs-toggle="modal" 
-                                        data-bs-target="#modalEdit<?php echo $row['id']; ?>" 
-                                        title="Edit">
-                                    <i class="bi bi-pencil-square"></i>
-                                </button>
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                $data_layanan[] = $row; 
+                            ?>
+                            <tr>
+                                <td class="ps-4 py-3"><span class="fw-bold"><?php echo $no++; ?></span></td>
                                 
-                                <button type="button" class="btn btn-sm btn-outline-danger rounded-2" 
-                                   onclick="konfirmasiHapus(<?php echo $row['id']; ?>, '<?php echo $row['nama_layanan']; ?>')"
-                                   title="Hapus">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        <?php } ?>
+                                <td class="py-3">
+                                    <span class="fw-bold"><?php echo $row['nama_layanan']; ?></span>
+                                </td>
 
-                        <tr class="table-light border-top border-3">
-                            <td class="ps-4 py-3"><span class="fw-bold text-muted">#</span></td>
-                            <td class="py-3"><span class="fw-bold text-muted">Contoh Dummy</span></td>
-                            <td class="py-3"><small class="text-muted">https://contoh.go.id</small></td>
-                            <td class="py-3"><small class="text-muted">Ini adalah data contoh statis HTML...</small></td>
-                            <td class="py-3"><span class="badge bg-warning bg-opacity-10 text-warning rounded-pill px-3 fw-bold">Dummy</span></td>
-                            <td class="py-3 text-center text-muted">Contoh</td>
-                        </tr>
+                                <td class="py-3">
+                                    <a href="<?php echo $row['url']; ?>" target="_blank" class="text-primary text-decoration-none small fw-semibold" style="display: block; max-width: 250px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                        <?php echo $row['url']; ?> <i class="bi bi-box-arrow-up-right ms-1" style="font-size: 10px;"></i>
+                                    </a>
+                                </td>
 
-                    </tbody>
-                </table>
+                                <td class="py-3">
+                                    <small class="text-muted">
+                                        <?php 
+                                        echo substr($row['deskripsi'], 0, 50) . '...'; 
+                                        ?>
+                                    </small>
+                                </td>
+                                <td class="py-3">
+                                    <?php if ($row['status'] == 1): ?>
+                                        <span class="badge bg-success bg-opacity-10 text-success rounded-pill px-3 fw-bold">Aktif</span>
+                                    <?php else: ?>
+                                        <span class="badge bg-secondary bg-opacity-10 text-secondary rounded-pill px-3 fw-bold">Non-Aktif</span>
+                                    <?php endif; ?>
+                                </td>
+                                <td class="py-3 text-center">
+                                    <button class="btn btn-sm btn-outline-primary rounded-2 me-1" data-bs-toggle="modal" 
+                                            data-bs-target="#modalEdit<?php echo $row['id']; ?>" 
+                                            title="Edit">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </button>
+                                    
+                                    <button type="button" class="btn btn-sm btn-outline-danger rounded-2" 
+                                       onclick="konfirmasiHapus(<?php echo $row['id']; ?>, '<?php echo $row['nama_layanan']; ?>')"
+                                       title="Hapus">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
+
+        <?php else : ?>
+            
+            <div class="text-center py-5">
+                <div class="mb-3">
+                    <i class="bi bi-hdd-network text-muted" style="font-size: 4rem; opacity: 0.3;"></i>
+                </div>
+                <h6 class="text-muted fw-bold">Belum ada layanan</h6>
+                <p class="text-muted small">Silakan tambahkan layanan baru melalui tombol di atas.</p>
+            </div>
+
+        <?php endif; ?>
+
     </div>
 
     <div class="modal fade" id="modalTambah" tabindex="-1">
@@ -154,7 +164,11 @@ $result = mysqli_query($koneksi, $query);
         </div>
     </div>
 
-    <?php foreach ($data_layanan as $row): ?>
+    <?php 
+    // Pastikan $data_layanan sudah terisi, jika kosong (karena masuk blok else), loop ini tidak akan jalan dan tidak error
+    if (!empty($data_layanan)) {
+        foreach ($data_layanan as $row): 
+    ?>
     <div class="modal fade" id="modalEdit<?php echo $row['id']; ?>" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content border-0 rounded-4 shadow-lg text-start">
@@ -195,7 +209,9 @@ $result = mysqli_query($koneksi, $query);
             </div>
         </div>
     </div>
-    <?php endforeach; ?>
+    <?php endforeach; 
+    } // End if !empty
+    ?>
 
     <script>
     function konfirmasiHapus(id, nama) {
@@ -236,7 +252,7 @@ $result = mysqli_query($koneksi, $query);
             icon = 'success';
         } else if (status === 'gagal') {
             const errorCode = urlParams.get('code'); 
-            const errorMsg = decodeURIComponurlParams.get('msg'));
+            const errorMsg = decodeURIComponent(urlParams.get('msg'));
             title = 'Gagal Menyimpan!';
             // Tampilkan Kode Error agar terlihat keren dan informatif
             text = 'Error (' + errorCode + '): ' + errorMsg;
