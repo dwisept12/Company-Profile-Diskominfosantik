@@ -4,6 +4,27 @@ if ($_SESSION['status_login'] != true) {
     header("Location: login.php"); // Jika belum login, paksa ke halaman login
     exit();
 }
+
+include 'db.php'; // Hubungkan ke database
+
+// 1. Hitung Jumlah Berita
+$queryBerita = mysqli_query($koneksi, "SELECT COUNT(*) as total FROM berita");
+$dataBerita = mysqli_fetch_assoc($queryBerita);
+
+// 2. Hitung Layanan Aktif
+$queryLayanan = mysqli_query($koneksi, "SELECT COUNT(*) as total FROM layanan WHERE status = 1");
+$dataLayanan = mysqli_fetch_assoc($queryLayanan);
+
+// 3. PERUBAHAN: Hitung Jumlah Dokumen
+$queryDokumen = mysqli_query($koneksi, "SELECT COUNT(*) as total FROM dokumen");
+$dataDokumen = mysqli_fetch_assoc($queryDokumen);
+
+// 4. Hitung Total Pegawai
+$queryPegawai = mysqli_query($koneksi, "SELECT COUNT(*) as total FROM pegawai");
+$dataPegawai = mysqli_fetch_assoc($queryPegawai);
+
+// 5. Ambil 5 Berita Terakhir untuk Tabel
+$beritaTerbaru = mysqli_query($koneksi, "SELECT * FROM berita ORDER BY tanggal DESC LIMIT 5");
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -24,56 +45,59 @@ if ($_SESSION['status_login'] != true) {
         <header class="d-flex justify-content-between align-items-center mb-5">
             <div>
                 <h3 class="fw-bold text-navy mb-1">Ringkasan Statistik</h3>
-                <p class="text-muted small">Selamat datang kembali, Admin Diskominfosantik.</p>
+                <p class="text-muted small">Selamat datang kembali, <?php echo isset($_SESSION['a_global']) ? $_SESSION['a_global']->admin_name : 'Admin'; ?>.</p>
             </div>
         </header>
 
         <div class="row g-4 mb-5">
             <div class="col-md-3">
-                <div class="card stat-card shadow-sm p-4 bg-white">
+                <div class="card stat-card shadow-sm p-4 bg-white border-0 rounded-4">
                     <div class="d-flex justify-content-between mb-3">
                         <div class="icon-box text-primary mb-0" style="background-color: #f0f4ff !important;"><i class="bi bi-newspaper h4 mb-0"></i></div>
-                        <span class="text-success small fw-bold">+12%</span>
+                        <span class="text-success small fw-bold">+Aktif</span>
                     </div>
                     <h6 class="text-muted fw-semibold">Jumlah Berita</h6>
-                    <h2 class="fw-bold text-navy mb-0">(bayaknya jumlah berita)</h2>
+                    <h2 class="fw-bold text-navy mb-0"><?php echo $dataBerita['total']; ?></h2>
                 </div>
             </div>
+
             <div class="col-md-3">
-                <div class="card stat-card shadow-sm p-4 bg-white">
+                <div class="card stat-card shadow-sm p-4 bg-white border-0 rounded-4">
                     <div class="d-flex justify-content-between mb-3">
-                        <div class="icon-box text-success mb-0" style="background-color: #f0f4ff !important;"><i class="bi bi-grid h4 mb-0"></i></div>
+                        <div class="icon-box text-success mb-0" style="background-color: #e8f5e9 !important;"><i class="bi bi-grid h4 mb-0"></i></div>
                     </div>
                     <h6 class="text-muted fw-semibold">Layanan Aktif</h6>
-                    <h2 class="fw-bold text-navy mb-0">(bayaknya layanan  Aktif)</h2>
+                    <h2 class="fw-bold text-navy mb-0"><?php echo $dataLayanan['total']; ?></h2>
                 </div>
             </div>
+
             <div class="col-md-3">
-                <div class="card stat-card shadow-sm p-4 bg-white">
+                <div class="card stat-card shadow-sm p-4 bg-white border-0 rounded-4">
                     <div class="d-flex justify-content-between mb-3">
-                        <div class="icon-box text-warning mb-0" style="background-color: #f0f4ff !important;"><i class="bi bi-envelope h4 mb-0"></i></div>
+                        <div class="icon-box text-warning mb-0" style="background-color: #fff8e1 !important;"><i class="bi bi-file-earmark-text h4 mb-0"></i></div>
                     </div>
-                    <h6 class="text-muted fw-semibold">Pesan Masuk</h6>
-                    <h2 class="fw-bold text-navy mb-0">(Banyaknya Pesan Masuk)</h2>
+                    <h6 class="text-muted fw-semibold">Total Dokumen</h6>
+                    <h2 class="fw-bold text-navy mb-0"><?php echo $dataDokumen['total']; ?></h2>
                 </div>
             </div>
+
             <div class="col-md-3">
-                <div class="card stat-card shadow-sm p-4 bg-white">
+                <div class="card stat-card shadow-sm p-4 bg-white border-0 rounded-4">
                     <div class="d-flex justify-content-between mb-3">
-                        <div class="icon-box text-info mb-0" style="background-color: #f0f4ff !important;"><i class="bi bi-people h4 mb-0"></i></div>
+                        <div class="icon-box text-info mb-0" style="background-color: #e0f7fa !important;"><i class="bi bi-people h4 mb-0"></i></div>
                     </div>
                     <h6 class="text-muted fw-semibold">Total Pegawai</h6>
-                    <h2 class="fw-bold text-navy mb-0">(Banyaknya total pegawai)</h2>
+                    <h2 class="fw-bold text-navy mb-0"><?php echo $dataPegawai['total']; ?></h2>
                 </div>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col-lg-12">
                 <div class="card border-0 shadow-sm rounded-4 p-4">
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <h5 class="fw-bold text-navy mb-0">Berita Terbit Terakhir</h5>
-                        <a href="berita-admin.php" class="btn btn-navy-dark btn-sm rounded-pill px-3">+ Tambah Baru</a>
+                        <a href="berita-admin.php" class="btn btn-navy-dark btn-sm rounded-pill px-3">+ Kelola Berita</a>
                     </div>
                     <div class="table-responsive">
                         <table class="table align-middle">
@@ -81,17 +105,35 @@ if ($_SESSION['status_login'] != true) {
                                 <tr>
                                     <th class="ps-3">Judul Berita</th>
                                     <th>Kategori</th>
+                                    <th>Tanggal</th>
                                     <th>Status</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="ps-3 fw-semibold">Peluncuran Smart City Bekasi</td>
-                                    <td><span class="badge bg-primary bg-opacity-10 text-primary">Teknologi</span></td>
-                                    <td><span class="text-success small fw-bold"><i class="bi bi-circle-fill me-1" style="font-size: 8px;"></i> Terbit</span></td>
-                                    <td><button class="btn btn-light btn-sm"><i class="bi bi-pencil"></i></button></td>
-                                </tr>
+                                <?php if(mysqli_num_rows($beritaTerbaru) > 0): ?>
+                                    <?php while($row = mysqli_fetch_assoc($beritaTerbaru)): ?>
+                                    <tr>
+                                        <td class="ps-3 fw-semibold text-navy"><?php echo substr($row['judul'], 0, 50); ?>...</td>
+                                        <td><span class="badge bg-primary bg-opacity-10 text-primary px-3 rounded-pill"><?php echo $row['kategori']; ?></span></td>
+                                        <td><small class="text-muted"><?php echo date('d M Y', strtotime($row['tanggal'])); ?></small></td>
+                                        <td>
+                                            <?php if($row['status'] == 'publish'): ?>
+                                                <span class="text-success small fw-bold"><i class="bi bi-circle-fill me-1" style="font-size: 8px;"></i> Terbit</span>
+                                            <?php else: ?>
+                                                <span class="text-muted small fw-bold"><i class="bi bi-circle-fill me-1" style="font-size: 8px;"></i> Draft</span>
+                                            <?php endif; ?>
+                                        </td>
+                                        <td>
+                                            <a href="berita-admin.php" class="btn btn-light btn-sm text-primary"><i class="bi bi-pencil"></i></a>
+                                        </td>
+                                    </tr>
+                                    <?php endwhile; ?>
+                                <?php else: ?>
+                                    <tr>
+                                        <td colspan="5" class="text-center text-muted py-4">Belum ada data berita.</td>
+                                    </tr>
+                                <?php endif; ?>
                             </tbody>
                         </table>
                     </div>
