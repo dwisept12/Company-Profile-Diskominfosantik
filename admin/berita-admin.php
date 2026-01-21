@@ -43,7 +43,10 @@ $jumlah_berita = mysqli_num_rows($result);
             </button>
         </header>
 
-        <?php if ($jumlah_berita > 0) : ?>
+        <?php 
+        // 2. CEK APAKAH ADA DATA?
+        if ($jumlah_berita > 0) : 
+        ?>
 
             <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
                 <div class="table-responsive">
@@ -101,7 +104,7 @@ $jumlah_berita = mysqli_num_rows($result);
                                     <button class="btn btn-sm btn-outline-primary rounded-2 me-1" data-bs-toggle="modal" data-bs-target="#modalEditBerita<?php echo $row['id']; ?>">
                                         <i class="bi bi-pencil-square"></i>
                                     </button>
-                                    <button type="button" class="btn btn-sm btn-outline-danger rounded-2" onclick="konfirmasiHapus(<?php echo $row['id']; ?>, '<?php echo addslashes($row['judul']); ?>')" title="Hapus">
+                                    <button type="button" class="btn btn-sm btn-outline-danger rounded-2" onclick="konfirmasiHapus(<?php echo $row['id']; ?>, '<?php echo htmlspecialchars(addslashes($row['judul']), ENT_QUOTES); ?>')" title="Hapus">
                                         <i class="bi bi-trash"></i>
                                     </button>
                                 </td>
@@ -123,7 +126,7 @@ $jumlah_berita = mysqli_num_rows($result);
                                                     <div class="col-lg-8 text-start">
                                                         <div class="mb-4 text-start">
                                                             <label class="form-label fw-bold text-navy text-start">Judul Berita</label>
-                                                            <input type="text" name="judul" class="form-control rounded-3 py-2 text-start" value="<?php echo $row['judul']; ?>" required>
+                                                            <input type="text" name="judul" class="form-control rounded-3 py-2 text-start" value="<?php echo htmlspecialchars($row['judul']); ?>" required>
                                                         </div>
                                                         <div class="mb-4 text-start">
                                                             <label class="form-label fw-bold text-navy text-start">Isi Berita Lengkap</label>
@@ -163,8 +166,8 @@ $jumlah_berita = mysqli_num_rows($result);
                                                             <div class="mb-3 text-start">
                                                                 <label class="form-label small fw-bold text-start">Status</label>
                                                                 <select name="status" class="form-select form-select-sm rounded-3 text-start text-start">
-                                                                    <option value="publish" <?php echo ($row['status'] == 'publish') ? 'selected' : ''; ?>>Terbitkan</option>
-                                                                    <option value="draft" <?php echo ($row['status'] == 'draft') ? 'selected' : ''; ?>>Draft</option>
+                                                                    <option value="1" <?php echo ($row['status'] == 'publish') ? 'selected' : ''; ?>>Terbitkan</option>
+                                                                    <option value="0" <?php echo ($row['status'] == 'draft') ? 'selected' : ''; ?>>Draft</option>
                                                                 </select>
                                                             </div>
                                                             <button type="submit" class="btn btn-navy-dark w-100 rounded-pill fw-bold text-white py-2 shadow">
@@ -245,8 +248,8 @@ $jumlah_berita = mysqli_num_rows($result);
                         <div class="mb-4 text-start">
                             <label class="form-label fw-semibold small text-start">Status</label>
                             <select name="status" class="form-select rounded-3 py-2 text-start">
-                                <option value="publish">Terbitkan Langsung</option>
-                                <option value="draft">Simpan sebagai Draft</option>
+                                <option value="1">Terbitkan Langsung</option>
+                                <option value="0">Simpan sebagai Draft</option>
                             </select>
                         </div>
                         <div class="d-grid text-start">

@@ -33,7 +33,7 @@ $jumlah_pegawai = mysqli_num_rows($result);
     <?php include 'sidebar.php'; ?>
 
     <div class="main-content text-start">
-        <header class="mb-5 d-flex justify-content-between align-items-center text-start">
+        <header class="mb-4 d-flex justify-content-between align-items-center text-start">
             <div>
                 <h3 class="fw-bold text-navy mb-1 text-start">Profil Pegawai</h3>
                 <p class="text-muted small text-start">Kelola data pejabat, tugas, dan riwayat pendidikan staf.</p>
@@ -107,13 +107,13 @@ $jumlah_pegawai = mysqli_num_rows($result);
                                             <?php echo $row['bidang_tugas'] ?>
                                         </p>
                                     </div>
-                                    <div class="mb-3 text-start">
+                                    <div class="mb-1 text-start">
                                         <label class="small fw-bold text-muted d-block text-start">Riwayat Pendidikan</label>
                                         <ul class="list-unstyled small text-muted mb-0">
                                             <?php 
                                             if(!empty($pendidikan_array)){
                                                 foreach($pendidikan_array as $edu){
-                                                    echo "<li class='mb-3'>"; 
+                                                    echo "<li class='mb-1'>"; 
                                                     echo "<div class='fw-bold text-navy'>";
                                                     echo "<i class='bi bi-mortarboard-fill me-2 text-warning'></i>";
                                                     echo $edu['jenjang'] . " " . $edu['jurusan'] . " <span class='text-muted fw-normal'>(" . $edu['tahun'] . ")</span>"; 
