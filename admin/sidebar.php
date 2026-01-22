@@ -6,18 +6,15 @@
 $current_page = basename($_SERVER['PHP_SELF']);
 $nav_items = [
     'admin-dashboard.php' => 'Dashboard',
-    'manajemen-beranda.php' => 'Beranda',
-    'tentang-kami-admin.php' => 'Tentang Kami',
     'layanan-admin.php' => 'Layanan',
     'berita-admin.php' => 'Berita',
     'profil-pegawai-admin.php' => 'Profil Pegawai',
     'dokumen-admin.php' => 'Dokumen',
-    'pengaturan-admin.php' => 'Pengaturan Web',
 ];
 ?>
 
 <div class="sidebar shadow">
-    <div class="p-3 d-flex align-items-center mb-1">
+    <div class="p-3 d-flex align-items-center mb-2">
         <div class="logo-box bg-white text-primary me-2 fw-bold">DK</div>
         <span class="fw-bold h5 mb-0">Admin Panel</span>
     </div>

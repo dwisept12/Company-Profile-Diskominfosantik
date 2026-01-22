@@ -79,10 +79,6 @@ $jumlah_data = mysqli_num_rows($query);
                                 elseif(in_array($ext, ['ppt','pptx'])) { 
                                     $icon = "bi-file-earmark-ppt-fill"; 
                                     $color = "text-warning"; // Kuning/Oranye
-                                } 
-                                elseif(in_array($ext, ['zip','rar'])) { 
-                                    $icon = "bi-file-earmark-zip-fill"; 
-                                    $color = "text-dark"; // Hitam/Gelap
                                 }
                             ?>
                             <tr>
@@ -217,7 +213,7 @@ $jumlah_data = mysqli_num_rows($query);
                         <div class="mb-3">
                             <label class="form-label small fw-bold">Pilih Berkas</label>
                             <input type="file" name="file_upload" class="form-control rounded-3" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx" required>
-                            <small class="text-muted" style="font-size: 11px;">Format: PDF, Word, Excel, PowerPoint, ZIP, RAR (Max 10MB)</small>
+                            <small class="text-muted" style="font-size: 11px;">Format: PDF, Word, Excel, PowerPoint (Max 10MB)</small>
                         </div>
                         <div class="mb-3">
                             <label class="form-label small fw-bold">Hak Akses</label>

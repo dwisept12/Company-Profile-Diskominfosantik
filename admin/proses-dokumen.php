@@ -50,12 +50,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_GET['aksi'])) {
         $ukuran_file = $_FILES['file_upload']['size'];
         
         $ekstensi    = strtolower(pathinfo($nama_asli, PATHINFO_EXTENSION));
-        $nama_dasar  = pathinfo($nama_asli, PATHINFO_FILENAME);
+        // $nama_dasar = pathinfo($nama_asli, PATHINFO_FILENAME); // Tidak dipakai lagi
 
         // A. Validasi Format
-        $ext_valid = ['pdf', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'zip', 'rar'];
+        $ext_valid = ['pdf', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx'];
         if (!in_array($ekstensi, $ext_valid)) {
-            header("Location: dokumen-admin.php?status=gagal&msg=" . urlencode("Format file salah! Hanya PDF/Office/ZIP."));
+            header("Location: dokumen-admin.php?status=gagal&msg=" . urlencode("Format file salah! Hanya PDF/Office."));
             exit();
         }
 
@@ -65,10 +65,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_GET['aksi'])) {
             exit();
         }
 
-        // C. Rename File
-        $nama_bersih    = preg_replace('/[^A-Za-z0-9]/', '_', $nama_dasar);
-        $nama_bersih    = substr($nama_bersih, 0, 50);
-        $nama_file_baru = date("Y-m-d") . "_" . rand(100, 999) . "_" . $nama_bersih . "." . $ekstensi;
+        // =========================================================
+        // C. Rename File (MODIFIKASI DI SINI)
+        // =========================================================
+        // Menggunakan $judul sebagai dasar nama, bukan nama file asli
+        
+        // 1. Bersihkan judul dari karakter aneh (spasi jadi underscore, simbol hilang)
+        $judul_bersih = preg_replace('/[^A-Za-z0-9]/', '_', $judul);
+        
+        // 2. Batasi panjang nama file agar tidak terlalu panjang (misal 50 kar)
+        $judul_bersih = substr($judul_bersih, 0, 50);
+        
+        // 3. Susun nama baru: TANGGAL_ACAK_JUDUL.EXT
+        $nama_file_baru = date("Y-m-d") . "_" . rand(100, 999) . "_" . $judul_bersih . "." . $ekstensi;
 
         // D. Pindahkan File
         if (move_uploaded_file($tmp_file, $target_dir . $nama_file_baru)) {

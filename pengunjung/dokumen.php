@@ -118,7 +118,6 @@ function formatSizeUnits($bytes) {
                                         elseif(in_array($ext, ['doc','docx'])) { $icon = "bi-file-earmark-word-fill"; $color = "text-primary"; }
                                         elseif(in_array($ext, ['xls','xlsx'])) { $icon = "bi-file-earmark-excel-fill"; $color = "text-success"; }
                                         elseif(in_array($ext, ['ppt','pptx'])) { $icon = "bi-file-earmark-ppt-fill"; $color = "text-warning"; }
-                                        elseif(in_array($ext, ['zip','rar'])) { $icon = "bi-file-earmark-zip-fill"; $color = "text-dark"; }
 
                                         $file_path = "../assets/document/" . $row['nama_file'];
                                         $file_size = (file_exists($file_path)) ? formatSizeUnits(filesize($file_path)) : "File tidak ditemukan";
