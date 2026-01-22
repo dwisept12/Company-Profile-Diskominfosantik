@@ -32,8 +32,8 @@ $result = mysqli_query($koneksi, $query);
         </div>
     </section>
 
-    <section class="py-5">
-        <div class="container py-5">
+    <section class="py-3">
+        <div class="container py-4">
             <div class="row g-4 justify-content-center">
                 
                 <?php 

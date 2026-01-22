@@ -97,7 +97,8 @@ $beritaTerbaru = mysqli_query($koneksi, "SELECT * FROM berita ORDER BY tanggal D
                 <div class="card border-0 shadow-sm rounded-4 p-4">
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <h5 class="fw-bold text-navy mb-0">Berita Terbit Terakhir</h5>
-                        <a href="berita-admin.php" class="btn btn-navy-dark btn-sm rounded-pill px-3">+ Kelola Berita</a>
+                        <a href="berita-admin.php" class="btn btn-navy-dark btn-sm justify-content-between rounded-pill px-3">
+                            <i class="bi bi-plus-lg me-2"></i>Kelola Berita</a>
                     </div>
                     <div class="table-responsive">
                         <table class="table align-middle">

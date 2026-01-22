@@ -23,7 +23,7 @@
         </div>
     </section>
 
-    <section class="py-5">
+    <section class="py-3">
         <div class="container py-5">
             <div class="row g-5">
                 <div class="col-lg-12 mb-4">

@@ -66,7 +66,7 @@ $queryNewsList = mysqli_query($koneksi, "SELECT * FROM berita WHERE status = 'pu
       </div>
     </section>
 
-    <section class="py-5" style="margin-bottom: 0">
+    <section class="py-3" style="margin-bottom: 0">
       <div class="container py-5">
         <div class="text-center mb-5">
           <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 mb-3">Layanan Kami</span>

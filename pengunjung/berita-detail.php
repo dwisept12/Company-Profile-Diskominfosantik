@@ -38,7 +38,7 @@ if (isset($_GET['slug'])) {
 <body>
     <div data-include="navbar.html"></div>
 
-    <article class="py-5">
+    <article class="py-3">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8">

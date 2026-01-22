@@ -115,7 +115,7 @@ $jumlah_layanan = mysqli_num_rows($result);
             
             <div class="text-center py-5">
                 <div class="mb-3">
-                    <i class="bi bi-hdd-network text-muted" style="font-size: 4rem; opacity: 0.3;"></i>
+                    <i class="bi bi-hdd-stack text-muted" style="font-size: 4rem; opacity: 0.3;"></i>
                 </div>
                 <h6 class="text-muted fw-bold">Belum ada layanan</h6>
                 <p class="text-muted small">Silakan tambahkan layanan baru melalui tombol di atas.</p>

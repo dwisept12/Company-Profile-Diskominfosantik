@@ -60,36 +60,34 @@ function formatSizeUnits($bytes) {
                 <form action="" method="GET">
                     <div class="input-group shadow-lg rounded-pill overflow-hidden">
                         <span class="input-group-text border-0 bg-white ps-4"><i class="bi bi-search text-muted"></i></span>
-                        <input type="text" name="q" class="form-control border-0 py-3" placeholder="Cari dokumen (misal: RENSTRA, Anggaran)..." value="<?php echo isset($_GET['q']) ? $_GET['q'] : ''; ?>">
+                        <input type="text" name="q" class="form-control border-0 py-3" placeholder="Cari dokumen..." value="<?php echo isset($_GET['q']) ? htmlspecialchars($_GET['q']) : ''; ?>">
                         <button type="submit" class="btn btn-warning px-4"><i class="bi bi-search text-white"></i></button>
                     </div>
-                    <?php if(!empty($kategori_pilih)): ?>
-                        <input type="hidden" name="kategori" value="<?php echo $kategori_pilih; ?>">
-                    <?php endif; ?>
                 </form>
             </div>
         </div>
     </section>
 
-    <section class="py-5">
+    <section class="py-3">
         <div class="container py-4">
             
             <form action="" method="GET" id="formFilter">
                 <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
                     <h4 class="fw-bold text-navy mb-0">Daftar Dokumen Terbaru</h4>
                     <div class="d-flex gap-2">
-                        <?php if(isset($_GET['q'])): ?>
-                            <input type="hidden" name="q" value="<?php echo $_GET['q']; ?>">
-                        <?php endif; ?>
-
-                        <select name="kategori" class="form-select border-0 bg-light rounded-pill px-4" onchange="document.getElementById('formFilter').submit();">
-                            <option value="Semua Kategori">Semua Kategori</option>
-                            <option value="Profil" <?php if($kategori_pilih == 'Profil') echo 'selected'; ?>>Profil</option>
-                            <option value="Laporan" <?php if($kategori_pilih == 'Laporan') echo 'selected'; ?>>Laporan</option>
-                            <option value="Peraturan" <?php if($kategori_pilih == 'Peraturan') echo 'selected'; ?>>Peraturan</option>
-                            <option value="SK" <?php if($kategori_pilih == 'SK') echo 'selected'; ?>>SK</option>
-                            <option value="Renstra" <?php if($kategori_pilih == 'Renstra') echo 'selected'; ?>>Renstra</option>
-                        </select>
+                        <div class="col-auto">
+                            <select name="kategori" 
+                                    class="form-select border-0 bg-white shadow-sm rounded-pill ps-4 pe-5 text-secondary fw-semibold" 
+                                    style="cursor: pointer; background-position: right 1.5rem center; min-width: 200px;" 
+                                    onchange="if(this.value == '') { window.location.href='dokumen.php'; } else { this.form.submit(); }">
+                                <option value="">Semua Kategori</option>
+                                <option value="Profil" <?php if($kategori_pilih == 'Profil') echo 'selected'; ?>>Profil</option>
+                                <option value="Laporan" <?php if($kategori_pilih == 'Laporan') echo 'selected'; ?>>Laporan</option>
+                                <option value="Peraturan" <?php if($kategori_pilih == 'Peraturan') echo 'selected'; ?>>Peraturan</option>
+                                <option value="SK" <?php if($kategori_pilih == 'SK') echo 'selected'; ?>>SK</option>
+                                <option value="Renstra" <?php if($kategori_pilih == 'Renstra') echo 'selected'; ?>>Renstra</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </form>
@@ -105,11 +103,14 @@ function formatSizeUnits($bytes) {
                                 <th class="pe-4 py-3 text-navy text-end">Unduh</th>
                             </tr>
                         </thead>
+                        
                         <tbody>
-                            <?php if(mysqli_num_rows($result) > 0): ?>
+                            <?php 
+                            // KONDISI 1: JIKA DATA ADA
+                            if (mysqli_num_rows($result) > 0): 
+                            ?>
                                 <?php while($row = mysqli_fetch_assoc($result)): ?>
                                     <?php 
-                                        // 1. Cek Ekstensi untuk Ikon
                                         $ext = strtolower(pathinfo($row['nama_file'], PATHINFO_EXTENSION));
                                         $icon = "bi-file-earmark-text"; $color = "text-secondary";
                                         
@@ -119,12 +120,8 @@ function formatSizeUnits($bytes) {
                                         elseif(in_array($ext, ['ppt','pptx'])) { $icon = "bi-file-earmark-ppt-fill"; $color = "text-warning"; }
                                         elseif(in_array($ext, ['zip','rar'])) { $icon = "bi-file-earmark-zip-fill"; $color = "text-dark"; }
 
-                                        // 2. Hitung Ukuran File
                                         $file_path = "../assets/document/" . $row['nama_file'];
-                                        $file_size = "File tidak ditemukan";
-                                        if (file_exists($file_path)) {
-                                            $file_size = formatSizeUnits(filesize($file_path));
-                                        }
+                                        $file_size = (file_exists($file_path)) ? formatSizeUnits(filesize($file_path)) : "File tidak ditemukan";
                                     ?>
                                     <tr>
                                         <td class="ps-4 py-4">
@@ -148,11 +145,48 @@ function formatSizeUnits($bytes) {
                                         </td>
                                     </tr>
                                 <?php endwhile; ?>
+
                             <?php else: ?>
                                 <tr>
                                     <td colspan="4" class="text-center py-5">
-                                        <i class="bi bi-folder2-open text-muted" style="font-size: 3rem; opacity: 0.5;"></i>
-                                        <p class="text-muted mt-3 mb-0">Belum ada dokumen yang tersedia untuk kategori ini.</p>
+                                        
+                                        <?php 
+                                        $is_searching = (isset($_GET['q']) && !empty($_GET['q']));
+                                        $is_filtering = (isset($_GET['kategori']) && $_GET['kategori'] != '' && $_GET['kategori'] != 'Semua Kategori');
+
+                                        if ($is_searching || $is_filtering) : 
+                                        ?>
+                                            <div class="mb-3">
+                                                <i class="bi bi-search text-muted" style="font-size: 3rem; opacity: 0.3;"></i>
+                                            </div>
+                                            <h6 class="text-muted fw-bold">Dokumen tidak ditemukan</h6>
+                                            <p class="text-muted small">
+                                                Kami tidak menemukan dokumen 
+                                                <?php 
+                                                // Logika Teks Pesan Error
+                                                if($is_searching) {
+                                                    echo 'dengan kata kunci "<strong>'.htmlspecialchars($_GET['q']).'</strong>"';
+                                                }
+                                                // Karena sekarang "atau", logic ini akan jarang terjadi berbarengan,
+                                                // tapi tetap aman jika user mengetik URL manual.
+                                                if($is_searching && $is_filtering) {
+                                                    echo ' dan ';
+                                                }
+                                                if($is_filtering) {
+                                                    echo 'pada kategori "<strong>'.htmlspecialchars($_GET['kategori']).'</strong>"';
+                                                }
+                                                ?>.
+                                            </p>
+                                            <a href="dokumen.php" class="btn btn-sm btn-outline-primary rounded-pill px-4 mt-2">Reset Filter</a>
+
+                                        <?php else : ?>
+                                            <div class="mb-3">
+                                                <i class="bi bi-folder2-open text-muted" style="font-size: 3rem; opacity: 0.3;"></i>
+                                            </div>
+                                            <h6 class="text-muted fw-bold">Belum ada dokumen</h6>
+                                            <p class="text-muted small">Saat ini belum ada dokumen publik yang tersedia.</p>
+                                        <?php endif; ?>
+
                                     </td>
                                 </tr>
                             <?php endif; ?>
@@ -164,6 +198,7 @@ function formatSizeUnits($bytes) {
             <div class="mt-5 p-4 bg-light rounded-4 text-center">
                 <p class="text-muted mb-0">Tidak menemukan dokumen yang Anda cari? Hubungi kami melalui <a href="#" class="fw-bold text-decoration-none text-navy">Layanan Pengaduan Online</a>.</p>
             </div>
+
         </div>
     </section>
 
