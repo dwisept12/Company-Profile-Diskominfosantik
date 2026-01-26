@@ -53,7 +53,7 @@ $jumlah_pegawai = mysqli_num_rows($result);
                 mysqli_data_seek($result, 0);
                 while($row = mysqli_fetch_assoc($result)) : 
                     $foto_path = "../assets/img/pegawai/" . $row['foto'];
-                    $foto_tampil = ($row['foto'] == "" || !file_exists($foto_path)) ? "https://via.placeholder.com/300x400?text=No+Photo" : $foto_path;
+                    $foto_tampil = ($row['foto'] == "" || !file_exists($foto_path)) ? "../assets/img/images.jpg" : $foto_path;
                     $pendidikan_array = json_decode($row['riwayat_pendidikan'], true);
                 ?>
 

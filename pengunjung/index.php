@@ -1,14 +1,12 @@
 ﻿<?php
 // 1. Hubungkan ke Database
-// Pastikan path ini sesuai dengan struktur folder Anda
 include '../admin/db.php'; 
 
-// 2. Ambil data Kepala Dinas (Urutan 1)
-$queryKadin = mysqli_query($koneksi, "SELECT * FROM pegawai ORDER BY urutan ASC LIMIT 1");
+// 2. Ambil data Kepala Dinas
+$queryKadin = mysqli_query($koneksi, "SELECT * FROM pegawai WHERE jabatan LIKE 'Kepala Dinas' LIMIT 1");
 $dataKadin  = mysqli_fetch_assoc($queryKadin);
 
 // 3. Ambil data Layanan (HANYA 3 TERBARU)
-// LIMIT diubah jadi 3 sesuai permintaan
 $queryLayanan = mysqli_query($koneksi, "SELECT * FROM layanan WHERE status = 1 ORDER BY id DESC LIMIT 3");
 
 // 4. Ambil Berita Terbaru (Berita ke-1)
@@ -53,12 +51,22 @@ $queryNewsList = mysqli_query($koneksi, "SELECT * FROM berita WHERE status = 'pu
           <div class="col-lg-5 offset-lg-1">
             <div class="hero-img-card text-center">
               <?php 
-                $fotoKadin = (!empty($dataKadin['foto']) && file_exists("../assets/img/pegawai/".$dataKadin['foto'])) 
-                             ? "../assets/img/pegawai/".$dataKadin['foto'] : "assets/img/images.jpg";
+                // Cek apakah data kepala dinas ditemukan?
+                if($dataKadin) {
+                    $fotoKadin = (!empty($dataKadin['foto']) && file_exists("../assets/img/pegawai/".$dataKadin['foto'])) 
+                                 ? "../assets/img/pegawai/".$dataKadin['foto'] : "../assets/img/default-user.png";
+                    $namaKadin = $dataKadin['nama'];
+                    $jabatanKadin = $dataKadin['jabatan'];
+                } else {
+                    // Fallback jika tidak ada data jabatan 'Kepala Dinas' di database
+                    $fotoKadin = "https://via.placeholder.com/300x400?text=Foto+Kadin";
+                    $namaKadin = "Nama Kepala Dinas";
+                    $jabatanKadin = "Kepala Dinas";
+                }
               ?>
               <img src="<?php echo $fotoKadin; ?>" class="img-fluid rounded-4 mb-3 shadow-lg" style="aspect-ratio: 3/4; object-fit: cover;" alt="Kepala Dinas"/>
-              <h5 class="mb-0 fw-bold"><?php echo $dataKadin['nama'] ?? 'Nama Kepala Dinas'; ?></h5>
-              <small class="text-gold fw-bold"><?php echo $dataKadin['jabatan'] ?? 'Kepala Dinas'; ?></small>
+              <h5 class="mb-0 fw-bold"><?php echo $namaKadin; ?></h5>
+              <small class="text-gold fw-bold"><?php echo $jabatanKadin; ?></small>
               <div class="mt-2"><span class="bg-warning d-inline-block rounded" style="width: 50px; height: 3px"></span></div>
             </div>
           </div>
