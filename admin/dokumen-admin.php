@@ -1,9 +1,5 @@
 <?php
-session_start();
-if ($_SESSION['status_login'] != true) {
-    header("Location: login.php");
-    exit();
-}
+include 'session-check.php';
 include 'db.php'; // Hubungkan database
 
 // 1. Ambil data dulu di atas untuk dicek jumlahnya

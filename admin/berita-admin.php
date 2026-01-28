@@ -1,10 +1,5 @@
 <?php
-session_start();
-if ($_SESSION['status_login'] != true) {
-    header("Location: login.php");
-    exit();
-}
-
+include 'session-check.php';
 include 'db.php'; // Hubungkan ke database
 
 // Ambil data berita, urutkan dari yang terbaru
@@ -72,7 +67,7 @@ $jumlah_berita = mysqli_num_rows($result);
                                         </a>
                                     </div>
                                 </td>
-                                <td class="py-3"><small class="text-muted"><?php echo date('d M Y', strtotime($row['tanggal'])); ?></small></td>
+                                <td class="py-3"><small class="text-muted"><?php echo tgl_indo($row['tanggal'], true); ?></small></td>
                                 <td class="py-3"><span class="badge bg-primary bg-opacity-10 text-primary px-3 rounded-pill"><?php echo $row['kategori']; ?></span></td>
                                 <td class="py-3">
                                     <?php echo ($row['status'] == 'publish') ? '<span class="badge bg-success bg-opacity-10 text-success px-3 rounded-pill">Published</span>' : '<span class="badge bg-secondary bg-opacity-10 text-secondary px-3 rounded-pill">Draft</span>'; ?>

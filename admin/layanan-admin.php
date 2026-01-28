@@ -1,4 +1,5 @@
 <?php
+include 'session-check.php';
 // 1. Hubungkan ke Database
 include 'db.php';
 

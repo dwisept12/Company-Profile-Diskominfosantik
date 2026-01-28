@@ -52,7 +52,7 @@ if (isset($_GET['slug'])) {
                         <div class="d-flex align-items-center">
                             <i class="bi bi-calendar3 me-2 text-primary"></i>
                             <span class="small">
-                                <?php echo date('d F Y', strtotime($data['tanggal'])); ?>
+                                <?php echo tgl_indo($data['tanggal']); ?>
                             </span>
                         </div>
                         <span class="badge bg-info text-white"><?php echo $data['kategori']; ?></span>

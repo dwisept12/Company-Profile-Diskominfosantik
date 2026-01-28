@@ -78,6 +78,20 @@
                 borderRadius: '15px'
             });
         }
+
+        if (pesan === 'timeout') {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Sesi Telah Berakhir',
+                text: 'Waktu login Anda sudah habis. Demi keamanan, silakan login kembali.',
+                confirmButtonText: 'Login Ulang',
+                confirmButtonColor: '#003366', 
+                allowOutsideClick: false,
+                allowEscapeKey: false
+            }).then(() => {
+                window.history.replaceState(null, null, window.location.pathname);
+            });
+        }
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

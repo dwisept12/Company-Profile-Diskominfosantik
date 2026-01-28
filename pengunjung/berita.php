@@ -117,7 +117,7 @@ $kategori_aktif = isset($_GET['kategori']) ? $_GET['kategori'] : '';
                         </div>
                         <div class="card-body p-4 text-start">
                             <div class="d-flex align-items-center mb-3 text-muted small">
-                                <i class="bi bi-calendar3 text-primary me-2"></i> <?php echo date('d M Y', strtotime($row['tanggal'])); ?>
+                                <i class="bi bi-calendar3 text-primary me-2"></i> <?php echo tgl_indo($row['tanggal']); ?>
                             </div>
                             <h5 class="fw-bold text-navy mb-3 text-truncate-2"><?php echo $row['judul']; ?></h5>
                             <p class="text-muted small mb-4 lh-lg"><?php echo substr(strip_tags($row['isi']), 0, 100) . '...'; ?></p>

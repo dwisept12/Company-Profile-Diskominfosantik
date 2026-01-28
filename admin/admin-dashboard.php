@@ -1,10 +1,5 @@
 <?php
-session_start();
-if ($_SESSION['status_login'] != true) {
-    header("Location: login.php"); // Jika belum login, paksa ke halaman login
-    exit();
-}
-
+include 'session-check.php';
 include 'db.php'; // Hubungkan ke database
 
 // 1. Hitung Jumlah Berita
@@ -117,7 +112,7 @@ $beritaTerbaru = mysqli_query($koneksi, "SELECT * FROM berita ORDER BY tanggal D
                                     <tr>
                                         <td class="ps-3 fw-semibold text-navy"><?php echo substr($row['judul'], 0, 50); ?>...</td>
                                         <td><span class="badge bg-primary bg-opacity-10 text-primary px-3 rounded-pill"><?php echo $row['kategori']; ?></span></td>
-                                        <td><small class="text-muted"><?php echo date('d M Y', strtotime($row['tanggal'])); ?></small></td>
+                                        <td><small class="text-muted"><?php echo tgl_indo($row['tanggal'], true); ?></small></td>
                                         <td>
                                             <?php if($row['status'] == 'publish'): ?>
                                                 <span class="text-success small fw-bold"><i class="bi bi-circle-fill me-1" style="font-size: 8px;"></i> Terbit</span>

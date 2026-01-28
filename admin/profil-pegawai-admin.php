@@ -1,10 +1,5 @@
 <?php
-session_start();
-if ($_SESSION['status_login'] != true) {
-    header("Location: login.php");
-    exit();
-}
-
+include 'session-check.php';
 include 'db.php'; // Hubungkan ke Database
 
 // PERUBAHAN: Mengurutkan otomatis berdasarkan Hirarki Jabatan
