@@ -76,7 +76,13 @@ body {
 .navbar {
   background: white;
   border-bottom: 1px solid #eee;
-  padding: 0.5rem 0;
+  padding: 0.2rem 0 !important;
+  min-height: 55px;
+}
+
+.navbar-brand {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
 }
 
 .navbar-nav .nav-link {
@@ -84,45 +90,10 @@ body {
   padding: 0.5rem 0.8rem !important;
 }
 
-/* NAVBAR SEARCH (dropdown under icon) */
-.nav-search-wrap {
-  position: relative;
-}
-
-.nav-search-dropdown {
-  position: absolute;
-  top: calc(100% + 8px);
-  right: 0;
-  display: none;
-  background: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-  z-index: 1050;
-  min-width: 260px;
-}
-
-.nav-search-dropdown .input-group {
-  padding: 6px 8px;
-}
-
-.nav-search-dropdown input.form-control {
-  border: none;
-  box-shadow: none;
-}
-
-.nav-search-dropdown .btn {
-  border-radius: 6px;
-}
-
-.nav-search-wrap.open .nav-search-dropdown {
-  display: block;
-}
-
-@media (max-width: 992px) {
-  /* hide desktop search on smaller screens */
-  .nav-search-wrap {
-    display: none !important;
-  }
+.navbar-brand .logo-box{
+  height: 50px;
+  width: auto;
+  object-fit: contain;
 }
 
 .brand-text .text-navy {
@@ -335,6 +306,44 @@ footer {
   margin-top: 40px;
 }
 
+#footer .logo-box {
+  width: 180px;
+  height: auto;
+  object-fit: contain;
+  background-color: #ffffff; 
+  padding: 6px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  margin-right: 15px; 
+}
+
+#footer a.link-light {
+  color: rgba(255, 255, 255, 0.7) !important;
+  transition: all 0.3s ease;
+}
+
+#footer a.link-light:hover {
+  color: #ffb800 !important; /* Warna emas saat di-hover */
+  padding-left: 5px; /* Efek geser sedikit */
+}
+
+/* Tombol Sosmed */
+.social-btn {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.social-btn:hover {
+  background-color: #ffb800;
+  border-color: #ffb800;
+  color: #003366;
+  transform: translateY(-3px);
+}
+
 /* ===== SPECIAL EFFECTS ===== */
 .shadow-glow-pink {
   box-shadow: 0 0 25px rgba(236, 72, 153, 0.2);
@@ -472,6 +481,16 @@ footer {
   flex-direction: column;
 }
 
+.sidebar .logo-box {
+  width: 45px;
+  object-fit: contain;
+  background-color: white;
+  margin-left: 10px;
+  margin-right: 15px;
+  padding: 2px;
+  border-radius: 8px;
+}
+
 .nav-admin-link {
   color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
@@ -589,13 +608,9 @@ footer {
 
 .login-page-body .logo-box {
   width: 60px;
-  height: 60px;
-  background: #003366;
-  color: white;
+  background-color: white;
   border-radius: 15px;
-  font-size: 1.5rem;
   margin: 0 auto 20px;
-  font-weight: 700;
   box-shadow: 0 4px 12px rgba(0, 51, 102, 0.15);
 }
 

@@ -16,7 +16,8 @@
         <div class="card login-card">
             <div class="login-card-body">
                 <div class="text-center">
-                    <div class="logo-box fw-bold shadow">DK</div>
+                    <img src="../assets/img/logo/logo2.png" class="logo-box" alt="Logo Diskominfosantik">
+                    <!-- <div class="logo-box fw-bold shadow">DK</div> -->
                     <h4 class="fw-bold text-navy mb-1">Admin Panel</h4>
                     <p class="text-muted small mb-4">Diskominfosantik Kabupaten Bekasi</p>
                 </div>

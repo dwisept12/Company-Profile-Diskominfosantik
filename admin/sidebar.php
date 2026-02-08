@@ -15,7 +15,8 @@ $nav_items = [
 
 <div class="sidebar shadow">
     <div class="p-3 d-flex align-items-center mb-2">
-        <div class="logo-box bg-white text-primary me-2 fw-bold">DK</div>
+        <img src="../assets/img/logo/logo2.png" class="logo-box" alt="Logo Diskominfosantik">
+        <!-- <div class="logo-box bg-white text-primary me-2 fw-bold">DK</div> -->
         <span class="fw-bold h5 mb-0">Admin Panel</span>
     </div>
     
